@@ -277,6 +277,7 @@ html[data-simple="1"] .tab-b[data-tab=table]{display:none}
 .bstat{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:calc(13px*var(--z));margin:4px 0}
 .xcol h4{margin:0 0 6px}.xcol ul{padding-left:18px;line-height:1.65;font-size:calc(13.5px*var(--z))}.xlinks{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:calc(13px*var(--z))}.xlinks a{color:var(--accent)}
 @media (max-width:640px){.corerow{grid-template-columns:1fr}.ibars{width:100%}}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,calc(240px*var(--z))),1fr));gap:10px}.mcard{border:1px solid var(--border);border-radius:10px;padding:10px 12px;background:var(--surface2);font-size:calc(13px*var(--z));line-height:1.55}.mcard p{margin:4px 0}
 </style>
 </head>
 <body>
@@ -1823,15 +1824,55 @@ function expertCardHTML(){
   <p class="hint">各位專家的看法不同，也都不是保證獲利；請把它們當作「參考框架」，最後仍要依自己的資金與承受度決定。</p></div>`;
 }
 
+/* ---------- 12 位投資大師（理念整理，不轉載原文）＋用大師的尺檢查持股 ---------- */
+const MASTERS=[
+ ['巴菲特','價值＋長期','只買看得懂、願意長期持有的好公司；一般人用低成本的 S&P 500 指數基金最穩。他公開建議過遺產信託用 90% S&P 500 指數基金加 10% 短期公債。','核心 SPY／0050＋短債'],
+ ['彼得．林區','成長股','買自己看得懂的公司，持有理由改變才賣；不要把賺錢的賣掉、卻抱著賠錢的等回本。','持股健檢'],
+ ['歐尼爾（笑傲股市）','CAN SLIM','買強勢領漲股（接近新高、有量、勝過大盤），先看大盤方向；虧損 7～8% 就認錯停損。','停損尺、相對強弱、大盤方向'],
+ ['葛拉漢','安全邊際','買得夠便宜才有安全邊際；防禦型投資人股債大約各半，可在 25%～75% 之間調整。','股債比例參考'],
+ ['費雪','長期成長','集中持有少數競爭力強的成長型公司，只有基本面變壞才賣。','核心不頻繁換'],
+ ['蒙格','少而精','持股少而精，避免犯蠢比追求聰明更重要。','別買太多零碎個股'],
+ ['柏格','指數基金','低成本指數基金、長期持有，股債比例依年齡與承受度決定。','0050／SPY 當核心'],
+ ['達里歐','全天候','分散在不同環境下表現不同的資產（股、債、黃金等），並定期再平衡。','股債平衡與再平衡'],
+ ['霍華．馬克斯','週期與風險','先想風險再想報酬；市場有週期，過熱時不追高。','融資、大額資金警示'],
+ ['李佛摩','順勢交易','順著趨勢操作，賠錢要快處理，不要對賠錢的部位一路攤平。','均線跌破、不攤平'],
+ ['米奈爾維尼','趨勢模板','只買處於長期上升趨勢的股票（價格在年線之上、年線向上、離高點不遠），並嚴守停損。','趨勢模板檢查'],
+ ['坦伯頓','逆向分散','在極度悲觀時逢低分批買進，並分散到全球。','風險雷達恐慌時分批']];
+function ret60(rec){const p=prep(rec);if(!p||rec.bars.length<61)return null;const b=rec.bars;return (b[b.length-1].c/b[b.length-61].c-1)*100;}
+function masterRules(h){
+  const out=[],rec=h.rec,p=prep(rec);if(!p)return out;const A=p.A,n=rec.bars.length,ind=p.ind;
+  out.push({m:'歐尼爾',ok:h.pl>-7,t:h.pl>-7?(h.pl>=0?`目前獲利 ${fmtPct(h.pl,1)}，沒有碰到停損線。`:`虧損 ${fmtPct(h.pl,1)}，還在 7～8% 停損線內。`):`已虧 ${fmtPct(h.pl,1)}，超過 7～8%：他的原則是認錯離場，不攤平。`});
+  const bench=h.tw?'^TWII':'SPY',rs=ret60(rec),rb=ret60(DATA[bench]);
+  if(rs!=null&&rb!=null)out.push({m:'歐尼爾',ok:rs>=rb,t:rs>=rb?`近 60 日強於${nameOf(bench)}（${fmtPct(rs,1)} 對 ${fmtPct(rb,1)}），不是落後股。`:`近 60 日落後${nameOf(bench)}（${fmtPct(rs,1)} 對 ${fmtPct(rb,1)}），屬於落後股。`});
+  const m240=ind.ma240?ind.ma240[n-1]:null,m240b=ind.ma240?ind.ma240[n-21]:null;
+  if(m240!=null&&m240b!=null){const c=[A.last>m240,m240>m240b,A.last>=A.hi52*.75,A.last>(ind.ma60[n-1]||Infinity)],k=c.filter(Boolean).length;
+    out.push({m:'米奈爾維尼',ok:k===4,t:`趨勢模板 ${k}/4 項過關（在年線上、年線向上、離一年高點 25% 內、在季線上）。${k===4?'屬於長期上升趨勢。':'沒有全部過關，不符合「強勢上升股」。'}`});}
+  return out;
+}
+function mastersCardHTML(hs){
+  const cand=hs.filter(h=>h.kind==='other'&&h.last&&h.pl!=null);
+  const tw=maState(DATA['^TWII']),mk=tw&&tw.n?`大盤（加權指數）${tw.L.filter(x=>!x.na).every(x=>x.above)?'在所有均線之上，環境偏多':tw.L.find(x=>x.k===240&&!x.na&&!x.above)?'已跌破年線，環境偏空，歐尼爾會建議降低持股、不要新買':'站上 '+tw.nAbove+' 條、跌破 '+(tw.n-tw.nAbove)+' 條均線，環境偏中性'}。`:'大盤資料載入中。';
+  const rows=cand.map(h=>{const r=masterRules(h),bad=r.filter(x=>!x.ok).length;return `<div class="hrow ${bad>=2?'v-weak':'v-ok'}"><div class="hname"><b>${esc(nameOf(h.sym))}</b> <span class="flat">${esc(codeOf(h.sym))}</span> <span class="vtag ${bad>=2?'v-weak':'v-ok'}">大師尺 ${r.length-bad}/${r.length} 過關</span></div>${r.map(x=>`<div class="hv"><b class="${x.ok?'up':'down'}">${x.ok?'✓':'✕'}</b> <span class="flat">${x.m}</span>：${x.t}</div>`).join('')}</div>`;}).join('');
+  return `<div class="card pad" style="margin-bottom:14px"><h3 style="margin:0 0 4px">🎓 12 位投資大師的做法</h3>
+  <p class="hint" style="margin:0 0 8px">以下是我用自己的話整理各大師公開著作與訪談中廣為人知的理念，不是原文，也不代表他們推薦這個工具；每個人風格不同，彼此也有矛盾（例如價值派 vs 趨勢派），請當作「參考的尺」。</p>
+  <div class="mgrid">${MASTERS.map(m=>`<div class="mcard"><div><b>${m[0]}</b> <span class="vtag v-watch">${m[1]}</span></div><p>${m[2]}</p><div class="flat">本頁用在：${m[3]}</div></div>`).join('')}</div>
+  <h4 style="margin:14px 0 4px">用大師的尺檢查你的個股</h4><p class="sum">${mk}</p>
+  ${rows||'<p class="hint">輸入個股持股後，這裡會用歐尼爾（停損、相對強弱）與米奈爾維尼（趨勢模板）的標準檢查每一檔。</p>'}
+  <h4 style="margin:14px 0 4px">股債比例，大師怎麼配？</h4>
+  <ul class="plrules"><li>葛拉漢：股債大約各半，可在 25%～75% 之間依行情調整。</li><li>巴菲特：給遺產信託的建議是 90% 股票指數基金＋10% 短期公債。</li><li>柏格：常見的經驗法則是「債券比例約等於你的年齡」，再依承受度調整。</li><li>達里歐：不押單一情境，股、債、其他資產分散並定期再平衡。</li></ul>
+  <p class="hint">你現在設定的債券比例是 <b>${S.plan.bondPct}%</b>，可在上面的「換股計畫」調整。大師的比例差很多，沒有標準答案，取決於你多久會用到這筆錢、跌 30% 時睡不睡得著。</p>
+  <p class="hint">這是教育用的檢查表，不是投資建議。</p></div>`;
+}
+
 /* ---------- 規劃分頁 ---------- */
 function renderPlan(){
   const el=$('#planWrap');if(!el)return;
-  const need=['TWD=X','0050.TW','2330.TW','SPY','QQQ','DX-Y.NYB',...S.plan.bonds,...BOND_CAND.map(b=>b.sym),...Object.keys(S.plan.core),...S.portfolio.map(p=>p.symbol)];
+  const need=['^TWII','TWD=X','0050.TW','2330.TW','SPY','QQQ','DX-Y.NYB',...S.plan.bonds,...BOND_CAND.map(b=>b.sym),...Object.keys(S.plan.core),...S.portfolio.map(p=>p.symbol)];
   [...new Set(need)].forEach(x=>{if(!DATA[x])loadSymbol(x,{});});
   if(!INST.tried&&!INST.busy)fetchInst(false);
   const hs=holdings();
   el.innerHTML=`<p class="hint" style="margin:0 0 12px">這一頁把「外資／融資／華爾街」的大額資金動向、你的持股健檢、慢慢換到核心（0050／台積電／SPY）的計畫，以及穩定債券放在一起，全部用白話說明，不需要看懂 K 線。內容是統計與演練，不是投資建議。</p>
-  ${instCardHTML()}${flowCardHTML()}${healthCardHTML(hs)}${rotateCardHTML(hs)}${bondCardHTML()}${expertCardHTML()}`;
+  ${instCardHTML()}${flowCardHTML()}${healthCardHTML(hs)}${rotateCardHTML(hs)}${bondCardHTML()}${expertCardHTML()}${mastersCardHTML(hs)}`;
 }
 function bindPlan(){
   document.addEventListener('click',e=>{const t=e.target;if(!t.closest)return;
