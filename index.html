@@ -240,6 +240,43 @@ html[data-simple="1"] .tab-b[data-tab=table]{display:none}
 .rgt{font-size:calc(12.5px*var(--z));color:var(--ink2);margin-bottom:5px;font-weight:600}.rchips{display:flex;flex-wrap:wrap;gap:6px}
 .rchip{display:inline-flex;gap:6px;align-items:center;padding:4px 9px;border:1px solid var(--border);border-radius:8px;font-size:calc(12.5px*var(--z));background:var(--surface)}
 .rchip.s1{border-color:#d9a21b;background:color-mix(in srgb,#d9a21b 12%,var(--surface))}.rchip.s2{border-color:#e8742a;border-width:2px;background:color-mix(in srgb,#e8742a 14%,var(--surface))}
+/* ===== 股債規劃 / 均線線位 ===== */
+.maline{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0}
+.mapill{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:99px;border:1px solid var(--border);font-size:calc(12px*var(--z));background:var(--surface2);white-space:nowrap}
+.mapill i{font-style:normal;color:var(--ink2)}.mapill em{font-style:normal;font-weight:700}
+.mapill.on{color:var(--up);border-color:color-mix(in srgb,var(--up) 45%,transparent)}
+.mapill.off{color:var(--down);border-color:color-mix(in srgb,var(--down) 55%,transparent);background:color-mix(in srgb,var(--down) 9%,var(--surface))}
+.mapill.brk{border-width:2px}.mapill.na{color:var(--muted)}
+.ladder{width:100%;max-width:360px;height:auto;display:block;margin:4px 0}
+.ladder .up{color:var(--up)}.ladder .down{color:var(--down)}
+.ladcap{font-size:calc(12px*var(--z));color:var(--ink2);line-height:1.5}
+.maguide summary{font-size:calc(13px*var(--z))}
+.marow{padding:8px 0;border-top:1px solid var(--border)}.marow:first-of-type{border-top:0}.mawhy{font-size:calc(13px*var(--z));margin-top:3px}
+.igrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:8px 0}
+.icell{border:1px solid var(--border);border-radius:10px;padding:8px 10px;background:var(--surface2);display:flex;flex-direction:column;gap:2px}
+.icell span{font-size:calc(12px*var(--z));color:var(--ink2)}.icell b{font-size:calc(20px*var(--z))}.icell em{font-style:normal;font-size:calc(12px*var(--z))}
+.irow{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:6px 0}.ibars{width:300px;max-width:100%;height:auto}.icap{flex:1;min-width:180px;font-size:calc(12px*var(--z));color:var(--ink2)}
+.ibars .up{color:var(--up)}.ibars .down{color:var(--down)}
+.istory{border-left:4px solid var(--accent);padding:2px 12px;background:var(--wash);border-radius:6px}.istory p{margin:6px 0;line-height:1.6}
+.frow{padding:8px 0;border-top:1px solid var(--border);line-height:1.6}.frow:first-of-type{border-top:0}
+.hrow{border:1px solid var(--border);border-left-width:5px;border-radius:10px;padding:10px 12px;margin:8px 0;display:flex;flex-direction:column;gap:5px;background:var(--surface)}
+.hrow.v-stuck{border-left-color:#e8742a;background:color-mix(in srgb,#e8742a 7%,var(--surface))}.hrow.v-weak{border-left-color:#d9a21b}.hrow.v-watch{border-left-color:var(--muted)}.hrow.v-ok{border-left-color:var(--border)}
+.hname label{display:inline-flex;gap:6px;align-items:center;cursor:pointer}.hnum{font-size:calc(13.5px*var(--z))}.hv{font-size:calc(13.5px*var(--z));color:var(--ink2);line-height:1.55}
+.vtag{display:inline-block;padding:1px 8px;border-radius:99px;font-size:calc(11.5px*var(--z));font-weight:600;border:1px solid var(--border)}
+.vtag.v-stuck{background:#e8742a;color:#fff;border-color:#e8742a}.vtag.v-weak{background:#d9a21b;color:#1a1a19;border-color:#d9a21b}.vtag.v-watch{color:var(--ink2)}.vtag.v-ok{color:var(--accent);border-color:var(--accent)}
+.plctl{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:6px 0 10px}.plctl label{display:inline-flex;gap:6px;align-items:center}.pw{width:68px;flex:none;padding:4px 6px}
+.alloc{margin:8px 0;display:flex;flex-direction:column;gap:5px;font-size:calc(12.5px*var(--z))}
+.abar{display:flex;height:26px;border-radius:7px;overflow:hidden;gap:2px;background:var(--wash)}.abar span{display:flex;align-items:center;justify-content:center;font-size:calc(11.5px*var(--z));color:#fff;white-space:nowrap;overflow:hidden;min-width:0}
+.abar .a1{background:var(--s1)}.abar .a2{background:var(--s2)}.abar .a3{background:var(--s3)}
+.corebox{border:1px dashed var(--border);border-radius:10px;padding:8px 12px;margin:8px 0}.corerow{display:grid;grid-template-columns:minmax(120px,.8fr) 1.4fr 1.6fr;gap:6px 12px;padding:6px 0;border-top:1px solid var(--border);align-items:center}.corerow:first-of-type{border-top:0}
+.plmons{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,calc(280px*var(--z))),1fr));gap:10px;margin:10px 0}
+.plmon{border:1px solid var(--border);border-radius:10px;padding:10px 12px;background:var(--surface2);display:flex;flex-direction:column;gap:4px;font-size:calc(13px*var(--z));line-height:1.55}
+.plrules{margin:8px 0 4px;padding-left:20px;line-height:1.65;font-size:calc(13.5px*var(--z))}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,calc(250px*var(--z))),1fr));gap:10px;margin:8px 0}
+.bcard{border:1px solid var(--border);border-radius:10px;padding:10px 12px;background:var(--surface2)}.bcard.pick{border-color:var(--accent);border-width:2px}
+.bstat{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:calc(13px*var(--z));margin:4px 0}
+.xcol h4{margin:0 0 6px}.xcol ul{padding-left:18px;line-height:1.65;font-size:calc(13.5px*var(--z))}.xlinks{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:calc(13px*var(--z))}.xlinks a{color:var(--accent)}
+@media (max-width:640px){.corerow{grid-template-columns:1fr}.ibars{width:100%}}
 </style>
 </head>
 <body>
@@ -262,6 +299,7 @@ html[data-simple="1"] .tab-b[data-tab=table]{display:none}
     <button class="tab-b" role="tab" data-tab="easy" aria-selected="false">今日重點</button>
     <button class="tab-b" role="tab" data-tab="chart" aria-selected="true">看盤</button>
     <button class="tab-b" role="tab" data-tab="table" aria-selected="false">分析表</button>
+    <button class="tab-b" role="tab" data-tab="plan" aria-selected="false">股債規劃</button>
     <button class="tab-b" role="tab" data-tab="alerts" aria-selected="false">提醒<span id="alBadge"></span></button>
     <button class="tab-b" role="tab" data-tab="data" aria-selected="false">我的資料</button>
   </nav>
@@ -292,6 +330,7 @@ html[data-simple="1"] .tab-b[data-tab=table]{display:none}
     </div>
   </section>
   <section class="tab" id="tab-table"><div id="tableWrap"></div></section>
+  <section class="tab" id="tab-plan"><div id="planWrap"></div></section>
   <section class="tab" id="tab-alerts"><div id="alertsWrap"></div></section>
   <section class="tab" id="tab-data"><div id="dataWrap"></div></section>
   <footer>資料來源：Yahoo Finance、各新聞網站標題（皆透過 r.jina.ai 公開中繼讀取，對方看得到你查詢的代號與讀取的新聞來源）、FinMind、臺灣證券交易所；可能延遲 15～20 分鐘。本工具為輔助閱讀，所有指標與訊號僅供參考，不構成投資建議。</footer>
@@ -318,7 +357,7 @@ const fileSafe=s=>String(s).replace(/[^A-Za-z0-9._-]/g,'_');
 const todayStr=()=>new Date().toISOString().slice(0,10);
 
 /* ========== 代號與名稱 ========== */
-const TW_NAMES={'2330':'台積電','2317':'鴻海','2454':'聯發科','2308':'台達電','2882':'國泰金','2881':'富邦金','2412':'中華電','2303':'聯電','3711':'日月光投控','2891':'中信金','1301':'台塑','1303':'南亞','2002':'中鋼','0050':'元大台灣50','0056':'元大高股息','00878':'國泰永續高股息','00919':'群益台灣精選高息','2603':'長榮','2609':'陽明','2615':'萬海','3008':'大立光','2379':'瑞昱','3034':'聯詠','2357':'華碩','2382':'廣達','3231':'緯創','6505':'台塑化','1216':'統一','2886':'兆豐金','2884':'玉山金','2892':'第一金','5871':'中租-KY','2327':'國巨','2345':'智邦','3017':'奇鋐','3037':'欣興','2368':'金像電','6669':'緯穎','2301':'光寶科','2395':'研華','2207':'和泰車','1101':'台泥','5876':'上海商銀','6488':'環球晶','3293':'鈊象','8069':'元太','2408':'南亞科','2344':'華邦電','3443':'創意','3661':'世芯-KY'};
+const TW_NAMES={'2330':'台積電','2317':'鴻海','2454':'聯發科','2308':'台達電','2882':'國泰金','2881':'富邦金','2412':'中華電','2303':'聯電','3711':'日月光投控','2891':'中信金','1301':'台塑','1303':'南亞','2002':'中鋼','0050':'元大台灣50','0056':'元大高股息','00878':'國泰永續高股息','00919':'群益台灣精選高息','2603':'長榮','2609':'陽明','2615':'萬海','3008':'大立光','2379':'瑞昱','3034':'聯詠','2357':'華碩','2382':'廣達','3231':'緯創','6505':'台塑化','1216':'統一','2886':'兆豐金','2884':'玉山金','2892':'第一金','5871':'中租-KY','2327':'國巨','2345':'智邦','3017':'奇鋐','3037':'欣興','2368':'金像電','6669':'緯穎','2301':'光寶科','2395':'研華','2207':'和泰車','1101':'台泥','5876':'上海商銀','6488':'環球晶','3293':'鈊象','8069':'元太','2408':'南亞科','2344':'華邦電','3443':'創意','3661':'世芯-KY','00694B':'富邦美債1-3','00865B':'國泰US短期公債','00719B':'元大美債1-3','00679B':'元大美債20年','006208':'富邦台50'};
 const US_NAMES={'^SOX':'費城半導體','^IXIC':'那斯達克','^GSPC':'S&P 500','^VIX':'VIX 恐慌指數',AAPL:'蘋果',MSFT:'微軟',NVDA:'輝達',TSLA:'特斯拉',AMZN:'亞馬遜',GOOGL:'Alphabet',GOOG:'Alphabet C',META:'Meta',AMD:'超微',AVGO:'博通',NFLX:'Netflix',INTC:'英特爾',MU:'美光',QCOM:'高通',TSM:'台積電 ADR',ASML:'艾司摩爾',ORCL:'甲骨文',CRM:'Salesforce',PLTR:'Palantir',COIN:'Coinbase',BRK_B:'波克夏',JPM:'摩根大通',V:'Visa',WMT:'沃爾瑪',KO:'可口可樂',DIS:'迪士尼',SPY:'標普500 ETF',QQQ:'那斯達克100 ETF',VOO:'Vanguard 標普500',VTI:'全市場 ETF',SOXX:'半導體 ETF',SMH:'半導體 ETF',TLT:'20年美債 ETF'};
 const INDEX_DEF=[{sym:'^TWII',name:'加權指數',mk:'TW'},{sym:'^GSPC',name:'S&P 500',mk:'US'},{sym:'^IXIC',name:'那斯達克',mk:'US'},{sym:'^DJI',name:'道瓊工業',mk:'US'},{sym:'^SOX',name:'費城半導體',mk:'US'},{sym:'TWD=X',name:'美元／台幣',mk:'FX'}];
 const IDX_NAME=Object.fromEntries(INDEX_DEF.map(d=>[d.sym,d.name]));
@@ -349,8 +388,8 @@ const LEADERS_DEFAULT=[
  {sym:'^VIX',name:'VIX 恐慌指數',th:15,on:false,tw:['^TWII'],why:'市場恐慌程度；單日跳升代表避險情緒升溫（門檻看的是 VIX 自己的漲幅）'}];
 const DEFAULT_STATE={v:1,
   watch:['2330.TW','2317.TW','2454.TW','2308.TW','0050.TW','NVDA','AAPL','MSFT','TSLA','SPY'],
-  portfolio:[],notes:'',
-  alerts:{rules:[],log:[],seen:[],base:[],rlv:0,news:{on:true,min:4,items:[],seen:[],last:0},leaders:LEADERS_DEFAULT,opts:{leadOn:true,event:true,evSev:2,bigMove:true,bigPct:5,notify:false,sound:false}},
+  portfolio:[],notes:'',plan:{bondPct:30,months:6,core:{'0050.TW':40,'2330.TW':30,'SPY':30},bonds:['00694B.TWO','00865B.TW'],out:null},
+  alerts:{rules:[],log:[],seen:[],base:[],rlv:0,news:{on:true,min:4,items:[],seen:[],last:0},leaders:LEADERS_DEFAULT,opts:{maOn:true,leadOn:true,event:true,evSev:2,bigMove:true,bigPct:5,notify:false,sound:false}},
   settings:{simple:true,theme:'dark',ud:'tw',mode:'dual',z:1.15,type:'area',range:'6M',auto:true,
     ind:{ma:true,boll:false,vol:true,rsi:false,macd:false},
     single:'2330.TW',left:'2330.TW',right:'NVDA',compare:['^TWII','^GSPC','2330.TW','NVDA'],cmpSlot:{}}};
@@ -359,6 +398,7 @@ function mergeState(base,x){
   if(Array.isArray(x.watch))o.watch=x.watch.filter(s=>typeof s==='string');
   if(Array.isArray(x.portfolio))o.portfolio=x.portfolio.filter(p=>p&&p.symbol);
   if(typeof x.notes==='string')o.notes=x.notes;
+  if(x.plan&&typeof x.plan==='object'){const q=x.plan,d=o.plan;if(q.bondPct>=0&&q.bondPct<=80)d.bondPct=+q.bondPct;if(q.months>=1&&q.months<=24)d.months=q.months|0;if(q.core&&typeof q.core==='object'){const c={};Object.entries(q.core).forEach(([k,v])=>{if(typeof k==='string'&&+v>=0&&+v<=100)c[k]=+v;});if(Object.keys(c).length)d.core=c;}if(Array.isArray(q.bonds)&&q.bonds.length)d.bonds=q.bonds.filter(b=>typeof b==='string').slice(0,4);if(Array.isArray(q.out))d.out=q.out.filter(b=>typeof b==='string');}
   if(x.alerts&&typeof x.alerts==='object'){const a=x.alerts;if(Array.isArray(a.rules))o.alerts.rules=a.rules.filter(r=>r&&r.sym&&typeof r.type==='string');if(Array.isArray(a.log))o.alerts.log=a.log.slice(0,100);if(Array.isArray(a.seen))o.alerts.seen=a.seen.slice(-400);if(Array.isArray(a.base))o.alerts.base=a.base.slice(-200);if(typeof a.rlv==='number')o.alerts.rlv=Math.max(0,Math.min(3,a.rlv|0));if(a.news&&typeof a.news==='object'){const n=a.news,d=o.alerts.news;if(typeof n.on==='boolean')d.on=n.on;if(n.min===3||n.min===4||n.min===5)d.min=n.min;if(Array.isArray(n.items))d.items=n.items.filter(x=>x&&x.id&&x.title&&/^https?:/.test(x.link||'')&&x.t>0).slice(0,30);if(Array.isArray(n.seen))d.seen=n.seen.slice(-500);if(n.last>0)d.last=n.last;}if(Array.isArray(a.leaders)&&a.leaders.length)o.alerts.leaders=a.leaders.filter(l=>l&&l.sym).map(l=>({sym:String(l.sym),name:l.name||'',th:+l.th>0?+l.th:3,on:l.on!==false,tw:Array.isArray(l.tw)?l.tw.filter(x=>typeof x==='string'):[],why:l.why||''}));if(a.opts&&typeof a.opts==='object')Object.assign(o.alerts.opts,a.opts);}
   if(x.settings&&typeof x.settings==='object'){const s=x.settings;for(const k of Object.keys(o.settings)){if(s[k]===undefined)continue;
     if(k==='ind'&&typeof s.ind==='object')Object.assign(o.settings.ind,s.ind);else if(k==='cmpSlot'&&typeof s[k]==='object')o.settings.cmpSlot=s[k];else o.settings[k]=s[k];}}
@@ -368,7 +408,7 @@ let S;
 try{S=mergeState(DEFAULT_STATE,JSON.parse(localStorage.getItem('marketlens.v1')||'null'));}catch(e){S=mergeState(DEFAULT_STATE,null);}
 let saveTimer=null;
 function save(){clearTimeout(saveTimer);saveTimer=setTimeout(saveNow,350);}
-function stateJSON(){return JSON.stringify({app:'market-lens',savedAt:new Date().toISOString(),watch:S.watch,portfolio:S.portfolio,notes:S.notes,alerts:S.alerts,settings:S.settings},null,2);}
+function stateJSON(){return JSON.stringify({app:'market-lens',savedAt:new Date().toISOString(),watch:S.watch,portfolio:S.portfolio,notes:S.notes,plan:S.plan,alerts:S.alerts,settings:S.settings},null,2);}
 async function saveNow(){
   try{localStorage.setItem('marketlens.v1',JSON.stringify(S));}catch(e){}
   if(Folder.ok()){try{await Folder.write('marketlens-data.json',stateJSON());Folder.last=new Date();UI.folderChanged();}catch(e){Folder.err=String(e&&e.message||e);UI.folderChanged();}}
@@ -535,13 +575,13 @@ function bollCalc(c,n,k){n=n||20;k=k||2;const mid=sma(c,n),up=new Array(c.length
   for(let i=n-1;i<c.length;i++){let s=0;for(let j=i-n+1;j<=i;j++){const d=c[j]-mid[i];s+=d*d;}const sd=Math.sqrt(s/n);up[i]=mid[i]+k*sd;lo[i]=mid[i]-k*sd;}return{mid,up,lo};}
 function calcInd(bars){
   const c=bars.map(b=>b.c),v=bars.map(b=>b.v),bb=bollCalc(c),m=macdCalc(c);
-  return{c,v,ma5:sma(c,5),ma20:sma(c,20),ma60:sma(c,60),bbMid:bb.mid,bbUp:bb.up,bbLo:bb.lo,rsi:rsiCalc(c),dif:m.dif,dea:m.dea,hist:m.hist,vma20:sma(v,20)};
+  return{c,v,ma5:sma(c,5),ma20:sma(c,20),ma60:sma(c,60),ma240:sma(c,240),bbMid:bb.mid,bbUp:bb.up,bbLo:bb.lo,rsi:rsiCalc(c),dif:m.dif,dea:m.dea,hist:m.hist,vma20:sma(v,20)};
 }
 function analyze(bars,ind){
   const n=bars.length;if(n<2)return null;const i=n-1,L=bars[i],P=bars[i-1];
   const ret=k=>n>k?(L.c/bars[n-1-k].c-1)*100:null;
   const A={last:L.c,prev:P.c,chg:L.c-P.c,chgPct:(L.c/P.c-1)*100,date:L.t,vol:L.v,r5:ret(5),r20:ret(20),r60:ret(60),r250:ret(250),
-    ma5:ind.ma5[i],ma20:ind.ma20[i],ma60:ind.ma60[i],rsi:ind.rsi[i],hist:ind.hist[i],histPrev:ind.hist[i-1]};
+    ma5:ind.ma5[i],ma20:ind.ma20[i],ma60:ind.ma60[i],ma240:ind.ma240[i],rsi:ind.rsi[i],hist:ind.hist[i],histPrev:ind.hist[i-1]};
   const vp=bars.slice(Math.max(0,i-20),i).map(b=>b.v);const va=avg(vp);A.volRatio=va>0?L.v/va:null;
   const rets=[];for(let k=Math.max(1,n-60);k<n;k++)rets.push(bars[k].c/bars[k-1].c-1);
   const sd=stdev(rets);A.dailySd=sd==null?null:sd*100;A.vola=sd==null?null:sd*Math.sqrt(252)*100;
@@ -869,7 +909,7 @@ function overlayFor(sym){const rec=DATA[sym];if(rec&&rec.bars&&rec.bars.length>1
   return `<div><b>${esc(nameOf(sym))}：目前抓不到行情</b><p>${esc(rec.err)}。可能是這台電腦的網路擋住了行情來源，或代號有誤。</p><div class="btns"><button class="btn sm" data-act="retry" data-sym="${esc(sym)}">重試</button><button class="btn sm" data-act="csv" data-sym="${esc(sym)}">匯入 CSV</button><button class="btn sm" data-act="demo">先看示範資料</button></div></div>`;}
 function renderLive(){
   renderIndices();renderWatch();renderBanner();renderPanelsData();renderInsights();checkAlerts();
-  if(UI.tab==='easy'&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#easyWrap')))renderEasy();if(UI.tab==='table')renderTable();if(UI.tab==='data')renderPortfolio();if(UI.tab==='alerts'&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#alertsWrap')))renderAlerts();
+  if(UI.tab==='easy'&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#easyWrap')))renderEasy();if(UI.tab==='table')renderTable();if(UI.tab==='data')renderPortfolio();if(UI.tab==='plan'&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#planWrap')))renderPlan();if(UI.tab==='alerts'&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#alertsWrap')))renderAlerts();
 }
 function renderPanelsData(){
   const st=S.settings;
@@ -965,7 +1005,7 @@ function renderData(){
 }
 /* --- 版面與主題 --- */
 function setTab(t){UI.tab=t;$$('.tab-b').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===t));$$('.tab').forEach(x=>x.classList.toggle('on',x.id==='tab-'+t));
-  if(t==='easy')renderEasy();if(t==='table')renderTable();if(t==='data')renderData();if(t==='alerts'){UI.unread=0;renderBadge();renderAlerts();}if(t==='chart')UI.charts.forEach(c=>c.resize());}
+  if(t==='easy')renderEasy();if(t==='table')renderTable();if(t==='data')renderData();if(t==='plan')renderPlan();if(t==='alerts'){UI.unread=0;renderBadge();renderAlerts();}if(t==='chart')UI.charts.forEach(c=>c.resize());}
 function applyTheme(){const st=S.settings,r=document.documentElement;r.style.setProperty('--z',st.z||1);Chart.Z=st.z||1;r.dataset.theme=st.theme;r.dataset.ud=st.ud;applyMode();$('#bTheme').textContent=st.theme==='dark'?'☀ 切換淺色':'☾ 切換深色';$('#bUD').textContent='漲跌色：'+(st.ud==='tw'?'紅漲綠跌':'綠漲紅跌');Chart.refreshColors();UI.charts.forEach(c=>c.draw());}
 function focusSymbol(sym){const st=S.settings;
   if(st.mode==='single')st.single=sym;else if(st.mode==='dual'){if(mkOf(sym)==='TW')st.left=sym;else st.right=sym;}
@@ -1089,6 +1129,7 @@ function checkAlerts(){
     });
     if(al.seen.length>400)al.seen=al.seen.slice(-400);
   }
+  changed=maAlertCheck()||changed;
   if(changed)save();
 }
 function renderAlerts(){
@@ -1101,6 +1142,8 @@ function renderAlerts(){
     <div class="optrow"><label><input type="checkbox" data-alopt="event" ${o.event?'checked':''}> <b>異動提醒</b>：自選股出現新的異動時通知</label>
       <select class="fld sel" data-alopt="evSev" style="flex:none"><option value="3" ${o.evSev==3?'selected':''}>只通知重大</option><option value="2" ${o.evSev==2?'selected':''}>重大＋注意</option><option value="1" ${o.evSev==1?'selected':''}>全部（含提示）</option></select></div>
     <div class="optrow"><label><input type="checkbox" data-alopt="bigMove" ${o.bigMove?'checked':''}> <b>大波動提醒</b>：單日漲跌幅超過</label><input class="fld" type="number" min="1" max="30" step="0.5" data-alopt="bigPct" value="${esc(o.bigPct)}"><span>%</span></div>
+    <div class="optrow"><label><input type="checkbox" data-alopt="maOn" ${o.maOn!==false?'checked':''}> <b>均線跌破／站回提醒</b>：自選股與持股跌破月線、季線、年線時通知</label><label><input type="checkbox" data-alopt="ma5" ${o.ma5!==false?'checked':''}> 含 5 日線（較頻繁）</label></div>
+    <div class="optrow"><label><input type="checkbox" data-alopt="instOn" ${o.instOn!==false?'checked':''}> <b>外資／融資提醒</b>：外資單日買賣超或融資變動很大時通知</label><label><input type="checkbox" data-alopt="flowOn" ${o.flowOn!==false?'checked':''}> <b>華爾街爆量提醒</b>（SPY、QQQ）</label></div>
     <div class="optrow"><label><input type="checkbox" data-alopt="sound" ${o.sound?'checked':''}> 提示音</label>
       <label><input type="checkbox" data-alopt="notify" ${o.notify?'checked':''}> 瀏覽器桌面通知</label><button class="btn sm" data-alnotify>要求通知權限</button><span class="hint" style="margin:0">狀態：${permTxt}</span></div>
     <p class="hint">提醒只會在「這個頁面開著」時檢查（可以縮小或放在背景分頁）。開盤時約每 1.5～3 分鐘更新一次資料並比對；關掉頁面就不會提醒。行情有 15～20 分鐘延遲，不適合當成秒級的停損警報。</p>
@@ -1243,6 +1286,7 @@ function renderEasy(){
   ${demo?'<div class="banner" style="margin:0 0 12px"><b>目前顯示的是示範資料</b><span>不是真實行情，請先到「我的資料」確認網路或匯入 CSV。</span></div>':''}
   ${radarCardHTML()}
   ${newsCardHTML(true)}
+  ${maTodayCardHTML()}
   <div class="card pad" style="margin-bottom:14px">
     <h3 style="margin:0 0 6px">今天的重點</h3>
     <p class="sum">${rows.length?`你關注的 ${rows.length} 檔股票：<b>${cnt[0]} 檔有異動</b>、<b>${cnt[1]} 檔要留意</b>、<b>${cnt[2]} 檔平穩</b>。`:(loading.length?'行情載入中…':'還沒有關注的股票，請到下方「新增股票」輸入代號或名稱。')}${idx.length?`<br>大盤：${idx.join('、')}。`:''}</p>
@@ -1251,7 +1295,7 @@ function renderEasy(){
   <div class="egrid">${rows.map(s=>{const w=easyWords(s),A=s.A,bars=s.rec.bars.slice(-60);
     return `<article class="ecard lv${s.lv}"><header><div><b>${esc(nameOf(s.sym))}</b> <span class="flat">${esc(codeOf(s.sym))}</span></div><span class="lvb lv${s.lv}">${LV_ICO[s.lv]} ${LV_TXT[s.lv]}</span></header>
       <div class="eprice"><span class="big">${fmt(A.last)}</span><span class="${cls(A.chgPct)}">${arrow(A.chgPct)} ${fmtPct(A.chgPct,2)}</span><span class="spk">${spark(bars,110,34)}</span></div>
-      <p class="etoday">${w.today}</p><p class="ewhy">${w.why}</p><p class="etip">${w.tip}</p>${easyGuideHTML(s,openSet.has(s.sym))}
+      ${maBlockHTML(s.rec,s.sym)}<p class="etoday">${w.today}</p><p class="ewhy">${w.why}</p><p class="etip">${w.tip}</p>${easyGuideHTML(s,openSet.has(s.sym))}
       <footer><button class="btn sm" data-easyfocus="${esc(s.sym)}">看走勢圖</button><button class="btn sm" data-alfor="${esc(s.sym)}">🔔 設提醒</button><span class="flat" style="margin-left:auto">${A.date.slice(5).replace('-','/')} 收盤</span></footer></article>`;}).join('')}
     ${loading.map(x=>`<article class="ecard lv0"><header><div><b>${esc(nameOf(x))}</b> <span class="flat">${esc(codeOf(x))}</span></div></header><p class="etoday">${DATA[x]&&DATA[x].err?'暫時抓不到行情，稍後會自動重試。':'載入中…'}</p></article>`).join('')}</div>
   <form class="alform" id="easyAdd" style="grid-template-columns:1fr auto;margin-top:14px"><input class="fld" name="s" placeholder="新增股票：輸入代號或名稱，例如 2330、台積電、NVDA" list="wl" required><button class="btn pri" type="submit">新增</button></form>
@@ -1475,9 +1519,338 @@ function refreshRadar(round){
 }
 function bindRadar(){document.addEventListener('click',e=>{const el=e.target.closest&&e.target.closest('[data-radarscan]');if(!el)return;RADAR.forEach(d=>{if(DATA[d.sym])DATA[d.sym].fetchedAt=0;});refreshRadar().then(()=>toast('全球雷達已更新'));});}
 
-window.__ML={radarCalc,radarAlerts,leadStat,leadersHit,leaderSyms,get S(){return S;},DATA,UI,Chart,setDemo,useDemo,demoBars,parseCSV,analyze,detectEvents,calcInd,prep,checkAlerts,fireAlert};
-bindAlerts();bindNews();bindRadar();
-init();
+/* ========== 股債規劃：均線警示、大戶動向、持股健檢、換股計畫、債券、專家方法 ========== */
+const MAL=[{k:5,key:'ma5',name:'5日線',nick:'約 1 週的平均成本'},{k:20,key:'ma20',name:'月線',nick:'約 1 個月的平均成本'},{k:60,key:'ma60',name:'季線',nick:'約 3 個月的平均成本'},{k:240,key:'ma240',name:'年線',nick:'約 1 年的平均成本，長期多空分界'}];
+const MA_WHY={5:'5 日線是最近一週大家的平均成本，跌破代表短線轉弱，常見於回檔開始。',20:'月線是近一個月買進者的平均成本，跌破代表這批人平均被套，短線轉弱。',60:'季線是中期趨勢的分界，跌破代表中期支撐失守，風險升高。',240:'年線是長期的多空分界，跌破代表長期趨勢可能轉弱，是比較重大的警訊。'};
+const CORE_SET=new Set(['0050.TW','006208.TW','2330.TW','SPY','VOO','IVV']);
+const isBondSym=s=>/^\d{5}B\.(TW|TWO)$/.test(s);
+const FLOW_SYMS=['SPY','QQQ'];
+const yi=v=>Math.abs(v)<5e6?'0 億':(v>=0?'+':'−')+Math.abs(v/1e8).toFixed(Math.abs(v)>=1e10?0:1)+' 億';
+const yi0=v=>(v/1e8).toFixed(0)+' 億';
+const money=v=>isNum(v)?Math.round(v).toLocaleString('en-US'):'—';
+
+/* ---------- 均線狀態 ---------- */
+function maState(rec){
+  const p=prep(rec);if(!p)return null;const bars=rec.bars,n=bars.length,i=n-1,ind=p.ind;
+  const L=MAL.map(m=>{const arr=ind[m.key],v=arr?arr[i]:null,pv=arr?arr[i-1]:null;
+    if(v==null)return Object.assign({},m,{na:true});
+    const above=bars[i].c>=v,pAbove=pv==null?above:bars[i-1].c>=pv;
+    return Object.assign({},m,{v,above,gap:(bars[i].c/v-1)*100,dn:pAbove&&!above,up:!pAbove&&above});});
+  const ok=L.filter(x=>!x.na);
+  return {L,n:ok.length,nAbove:ok.filter(x=>x.above).length,date:bars[i].t,P:bars[i].c};
+}
+function maLevel(st){
+  if(!st||!st.n)return 0;const g=k=>st.L.find(x=>x.k===k&&!x.na);
+  if([g(60),g(240)].some(x=>x&&!x.above))return 2;
+  if([g(5),g(20)].some(x=>x&&!x.above))return 1;return 0;
+}
+function maWords(st){
+  if(!st||!st.n)return '資料還不夠（需要至少 20 個交易日）。';
+  const lv=maLevel(st),bad=st.L.filter(x=>!x.na&&!x.above).map(x=>x.name).join('、');
+  const head=st.nAbove===st.n?`站在全部 ${st.n} 條均線之上。`:st.nAbove===0?`跌破全部 ${st.n} 條均線。`:`站上 ${st.nAbove} 條、跌破 ${st.n-st.nAbove} 條（${bad}）。`;
+  const tail=lv===0?'短、中、長期都沒有破線，持有者不用緊張；別追太急。':lv===1?'短線均線已經失守，短線轉弱；中長期線還在，先觀察會不會很快站回。':'季線或年線已經跌破，趨勢偏弱；這種股票不適合硬攤平，若持有很久又賠錢，可以評估「換股計畫」。';
+  return head+tail;
+}
+function maPills(st){
+  if(!st)return '';
+  return st.L.map(m=>m.na?`<span class="mapill na" title="資料不足">${m.name} —</span>`:`<span class="mapill ${m.above?'on':'off'}${m.dn?' brk':''}" title="${esc(m.name)}：${esc(m.nick)}">${m.name} ${m.above?'✓':'✕'} <i>${fmtPct(m.gap,1)}</i>${m.dn?' <em>剛跌破</em>':m.up?' <em>剛站回</em>':''}</span>`).join('');
+}
+function maLadder(st,d){
+  if(!st)return '';const pts=st.L.filter(x=>!x.na);if(pts.length<2)return '';
+  const vals=pts.map(x=>x.v).concat(st.P);let lo=Math.min(...vals),hi=Math.max(...vals);const pad=(hi-lo)*.14||hi*.02;lo-=pad;hi+=pad;
+  const X0=18,X1=282,x=v=>X0+(v-lo)/(hi-lo)*(X1-X0);
+  const items=pts.map(m=>({x:x(m.v),t:m.name,cl:m.above?'up':'down',v:m.v})).sort((a,b)=>a.x-b.x);
+  const last=[-99,-99];items.forEach(it=>{const r=it.x-last[0]>=40?0:it.x-last[1]>=40?1:0;it.row=r;last[r]=it.x;});
+  const px=x(st.P);
+  return `<svg class="ladder" viewBox="0 0 300 72" role="img" aria-label="現價與各條均線的相對位置">
+    <line x1="8" y1="36" x2="292" y2="36" stroke="var(--axis)" stroke-width="2" stroke-linecap="round"/>
+    ${items.map(it=>`<g class="${it.cl}"><line x1="${it.x.toFixed(1)}" y1="${it.row?36:26}" x2="${it.x.toFixed(1)}" y2="${it.row?46:36}" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><text x="${Math.max(20,Math.min(280,it.x)).toFixed(1)}" y="${it.row?60:19}" text-anchor="middle" font-size="11" fill="currentColor">${it.t}</text></g>`).join('')}
+    <circle cx="${px.toFixed(1)}" cy="36" r="6.5" fill="var(--ink)" stroke="var(--surface)" stroke-width="2"/></svg>
+    <div class="ladcap">● 現價（${fmt(st.P,d)}）。刻度在圓點<b>左邊</b>＝現價在該均線<b>之上</b>（偏強）；在圓點<b>右邊</b>＝現價已<b>跌破</b>該均線（偏弱）。</div>`;
+}
+function maBlockHTML(rec,sym){
+  const st=maState(rec);if(!st||!st.n)return '';const lv=maLevel(st);
+  return `<div class="maline">${maPills(st)}</div><details class="eguide maguide"><summary>線位圖（現價在哪幾條線之上？）</summary><div class="egbody"><p>${maWords(st)}</p>${maLadder(st,decOf(sym))}</div></details>`;
+}
+function planSyms(){return [...new Set([...S.watch,...S.portfolio.map(p=>p.symbol)])];}
+function maTodayCardHTML(){
+  const rows=[];planSyms().forEach(sym=>{const rec=DATA[sym],st=maState(rec);if(!st||!st.n||rec.source==='demo')return;
+    const age=(Date.now()-new Date(st.date+'T12:00:00'))/864e5;if(age>4)return;
+    const dn=st.L.filter(x=>x.dn),up=st.L.filter(x=>x.up&&x.k>=20);if(dn.length||up.length)rows.push({sym,st,dn,up});});
+  rows.sort((a,b)=>Math.max(0,...b.dn.map(x=>x.k))-Math.max(0,...a.dn.map(x=>x.k)));
+  const body=rows.length?rows.slice(0,10).map(r=>`<div class="marow"><b>${esc(nameOf(r.sym))}</b> <span class="flat">${esc(codeOf(r.sym))}</span> ${r.dn.length?`<span class="mapill off brk">跌破 ${r.dn.map(x=>x.name).join('、')}</span>`:''}${r.up.length?`<span class="mapill on brk">站回 ${r.up.map(x=>x.name).join('、')}</span>`:''}<div class="flat mawhy">${r.dn.length?esc(MA_WHY[Math.max(...r.dn.map(x=>x.k))]):'站回均線代表走勢轉強，但要觀察是否站得穩（連續幾天收在線上）。'}</div></div>`).join(''):'<p class="hint" style="margin:6px 0">今天自選股和持股都沒有新跌破或站回均線。</p>';
+  return `<div class="card pad" style="margin-bottom:14px"><h3 style="margin:0 0 4px">📉 今日均線警示（5日線／月線／季線／年線）</h3>${body}
+    <details class="eguide" style="margin-top:8px"><summary>均線是什麼？（小白版）</summary><div class="egbody"><ul>${MAL.map(m=>`<li><b>${m.name}</b>：${m.nick}。${MA_WHY[m.k]}</li>`).join('')}</ul><p class="hint">用法很簡單：現價在線的上面＝這段期間買的人平均有賺，偏強；跌到線的下面＝平均被套，偏弱。破的線越長期（季線、年線）代表越嚴重。只是統計參考，不是買賣指令。</p></div></details></div>`;
+}
+function maAlertCheck(){
+  const al=S.alerts,o=al.opts;let changed=false;const now=Date.now();
+  if(o.maOn!==false)planSyms().forEach(sym=>{const rec=DATA[sym],st=maState(rec);if(!st||!st.n||!AL_SRC.has(rec.source))return;
+    if(now-new Date(st.date+'T12:00:00').getTime()>4*864e5)return;
+    const dn=st.L.filter(x=>x.dn&&(x.k!==5||o.ma5!==false)),up=st.L.filter(x=>x.up&&x.k>=60);
+    if(dn.length){const k='ma|'+sym+'|'+st.date+'|dn|'+dn.map(x=>x.k).join(',');
+      if(!al.seen.includes(k)){al.seen.push(k);changed=true;const big=Math.max(...dn.map(x=>x.k)),m=dn.find(x=>x.k===big);
+        fireAlert({sym,title:`${nameOf(sym)} 跌破${dn.map(x=>x.name).join('、')}`,msg:`收盤 ${fmt(st.P,decOf(sym))} 低於${m.name} ${fmt(m.v,decOf(sym))}。${MA_WHY[big]}`,dir:-1,sev:big>=60?3:big>=20?2:1,sticky:big>=60,tag:k});}}
+    if(up.length){const k='ma|'+sym+'|'+st.date+'|up|'+up.map(x=>x.k).join(',');
+      if(!al.seen.includes(k)){al.seen.push(k);changed=true;fireAlert({sym,title:`${nameOf(sym)} 站回${up.map(x=>x.name).join('、')}`,msg:'收盤重新站上均線，走勢轉強；觀察是否連續幾天站穩。',dir:1,sev:2,tag:k});}}});
+  if(o.instOn!==false)changed=instAlertCheck()||changed;
+  if(o.flowOn!==false)changed=flowAlertCheck()||changed;
+  return changed;
+}
+
+/* ---------- 三大法人與融資（證交所公開資料） ---------- */
+const INST={t:0,busy:false,days:[],margin:null,err:'',tried:false};
+try{const c=JSON.parse(localStorage.getItem('ml.inst.v1')||'null');if(c&&Array.isArray(c.days)){INST.days=c.days;INST.margin=c.margin||null;INST.t=c.t||0;}}catch(e){}
+const numz=x=>{const v=parseFloat(String(x).replace(/,/g,''));return isFinite(v)?v:null;};
+const ymd=d=>d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0');
+function parseBFI(j){
+  if(!j||j.stat!=='OK'||!Array.isArray(j.data))return null;
+  const rows=j.data.map(r=>({n:String(r[0]),net:numz(r[3])}));
+  const a=rows.find(r=>/^外資及陸資/.test(r.n)),b=rows.find(r=>/^外資自營商/.test(r.n));
+  if(!a&&!b)return null;
+  const fx=(a?a.net||0:0)+(b&&(!a||/不含/.test(a.n))?b.net||0:0);
+  const trust=rows.filter(r=>/投信/.test(r.n)).reduce((s,r)=>s+(r.net||0),0),dealer=rows.filter(r=>/^自營商/.test(r.n)).reduce((s,r)=>s+(r.net||0),0);
+  return {date:String(j.date||''),fx,trust,dealer};
+}
+function parseMargin(j){
+  if(!j||j.stat!=='OK')return null;const tabs=[];if(Array.isArray(j.tables))j.tables.forEach(t=>tabs.push(t));if(Array.isArray(j.data))tabs.push({data:j.data});
+  for(const t of tabs){for(const r of (t.data||[])){if(/融資金額/.test(String(r[0]))){const cur=numz(r[r.length-1]),prev=numz(r[r.length-2]);if(cur!=null&&prev!=null)return {date:String(j.date||''),bal:cur*1000,prev:prev*1000};}}}
+  return null;
+}
+async function fetchInst(force){
+  if(INST.busy)return;if(!force&&Date.now()-INST.t<20*60000&&INST.days.length)return;
+  INST.busy=true;INST.err='';if(UI.tab==='plan'&&!document.activeElement.closest('#planWrap'))renderPlan();
+  try{
+    const days=[];const d0=Date.now();let failed=0,first=true;
+    for(let k=0;k<14&&days.length<5;k++){const d=new Date(d0-k*864e5),dow=d.getDay();if(dow===0||dow===6)continue;
+      try{const j=await via(`https://www.twse.com.tw/rwd/zh/fund/BFI82U?type=day&dayDate=${ymd(d)}&response=json`,t=>jsonFrom(t),['direct','jina']);
+        const r=parseBFI(j);if(r){r.ds=ymd(d);days.push(r);}first=false;}
+      catch(e){if(first){failed=1;break;}}
+      await sleep(400);}
+    if(failed&&!days.length)throw new Error('連線失敗');
+    if(!days.length)throw new Error('證交所目前沒有回傳資料（可能還沒收盤公布，或格式有變）');
+    let margin=null;
+    try{const j=await via(`https://www.twse.com.tw/rwd/zh/marginTrading/MI_MARGN?date=${days[0].ds}&selectType=MS&response=json`,t=>jsonFrom(t),['direct','jina']);margin=parseMargin(j);if(margin)margin.ds=days[0].ds;}catch(e){}
+    INST.days=days;INST.margin=margin;INST.t=Date.now();INST.err='';
+    try{localStorage.setItem('ml.inst.v1',JSON.stringify({t:INST.t,days,margin}));}catch(e){}
+    if(checkAlerts)checkAlerts();
+  }catch(e){INST.err=(e&&e.message)||'連線失敗';}
+  finally{INST.busy=false;INST.tried=true;if(UI.tab==='plan'&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#planWrap')))renderPlan();}
+}
+function twdInfo(){const rec=DATA['TWD=X'],p=prep(rec);if(!p||rec.source==='demo')return null;return {last:p.A.last,d1:p.A.chgPct,d5:p.A.r5};}
+function fxRate(){const t=twdInfo();return t&&t.last>20&&t.last<45?t.last:null;}
+function instStory(){
+  const d=INST.days;if(!d.length)return null;const f=d[0].fx,f5=d.slice(0,5).reduce((s,x)=>s+x.fx,0),tw=twdInfo(),m=INST.margin;
+  let money_='';
+  if(f5<0&&Math.abs(f5)>=5e9){
+    if(tw&&isNum(tw.d5)){money_=tw.d5>=0.8?`外資近 ${Math.min(5,d.length)} 日合計賣超 ${yi0(-f5)}，同時美元兌台幣上升 ${tw.d5.toFixed(1)}%（台幣走貶）。兩件事一起出現，常代表賣股的錢有一部分<b>換成美元匯出</b>。`:tw.d5<=-0.3?`外資近 ${Math.min(5,d.length)} 日合計賣超 ${yi0(-f5)}，但台幣沒有貶、反而升值 ${Math.abs(tw.d5).toFixed(1)}%。這種情況下，賣股的錢<b>比較像留在台灣</b>（換股、放在台幣帳戶等待回補），不一定是撤出台灣。`:`外資近 ${Math.min(5,d.length)} 日合計賣超 ${yi0(-f5)}，台幣變動不大（${fmtPct(tw.d5,1)}），看不出錢是否離開台灣，要再觀察幾天。`;}
+    else money_=`外資近 ${Math.min(5,d.length)} 日合計賣超 ${yi0(-f5)}。匯率資料還沒載入，暫時無法判斷資金去向。`;
+  }else if(f5>0&&f5>=5e9)money_=`外資近 ${Math.min(5,d.length)} 日合計買超 ${yi0(f5)}，資金偏向流入台股。${tw&&isNum(tw.d5)&&tw.d5<=-0.3?'台幣同步升值，與資金流入一致。':''}`;
+  else money_='外資近幾日買賣超金額不大，沒有明顯的資金進出。';
+  let mg='';
+  if(m){const ch=m.bal-m.prev;
+    mg=f<0&&ch>0?'外資賣、融資卻增加：籌碼從法人轉到向券商借錢買股的散戶手上，行情若續跌，容易出現斷頭賣壓，風險較高。':f<0&&ch<0?'外資賣、融資也在減少：散戶同步降低槓桿，賣壓有機會逐步釋放。':f>0&&ch>0?'外資買、融資也增加：資金面偏熱，留意短線過熱後的回檔。':f>0&&ch<0?'外資買、融資減少：籌碼轉趨穩定，偏正面。':'';}
+  return {money:money_,margin:mg};
+}
+function instBars(){
+  const d=INST.days.slice(0,5).slice().reverse();if(d.length<2)return '';const mx=Math.max(...d.map(x=>Math.abs(x.fx)),1),W=300,H=104,Y=52,bw=34,gap=(W-bw*d.length)/(d.length+1);
+  return `<svg class="ibars" viewBox="0 0 ${W} ${H}" role="img" aria-label="外資近幾日買賣超"><line x1="0" y1="${Y}" x2="${W}" y2="${Y}" stroke="var(--axis)"/>${d.map((x,i)=>{const h=Math.max(2,Math.abs(x.fx)/mx*34),xx=gap+i*(bw+gap),up=x.fx>=0,cx=(xx+bw/2).toFixed(1);return `<g class="${up?'up':'down'}"><rect x="${xx.toFixed(1)}" y="${up?Y-h:Y}" width="${bw}" height="${h.toFixed(1)}" rx="3" fill="currentColor"/><text x="${cx}" y="${up?(Y-h-4).toFixed(1):(Y+h+12).toFixed(1)}" text-anchor="middle" font-size="11" fill="currentColor">${(x.fx/1e8).toFixed(0)}</text><text x="${cx}" y="${H-2}" text-anchor="middle" font-size="10" fill="var(--muted)">${x.ds.slice(4,6)}/${x.ds.slice(6)}</text></g>`;}).join('')}</svg>`;
+}
+function instCardHTML(){
+  const d=INST.days,f=d[0],st=instStory(),m=INST.margin;
+  let body;
+  if(INST.busy&&!d.length)body='<p class="hint">正在向證交所讀取三大法人與融資資料…</p>';
+  else if(!d.length)body=`<p class="hint">暫時抓不到證交所資料：${esc(INST.err||'尚未讀取')}。可能是網路擋住或還沒收盤公布（通常 15:00～16:00 後才有）。</p><button class="btn sm" data-plinst>重新讀取</button>`;
+  else{
+    const cell=(n,v)=>`<div class="icell"><span>${n}</span><b class="${cls(v)}">${v==null?'—':yi(v)}</b></div>`;
+    body=`<div class="igrid">${cell('外資 買賣超（今日）',f.fx)}${cell('投信',f.trust)}${cell('自營商',f.dealer)}${m?`<div class="icell"><span>融資餘額</span><b>${yi0(m.bal)}</b><em class="${cls(m.bal-m.prev)}">較前日 ${yi(m.bal-m.prev)}</em></div>`:'<div class="icell"><span>融資餘額</span><b>—</b></div>'}</div>
+    <div class="irow">${instBars()}<div class="icap">外資近 ${Math.min(5,d.length)} 個交易日買賣超（億元，${S.settings.ud==='tw'?'紅＝買超、綠＝賣超':'綠＝買超、紅＝賣超'}）。資料日期：${esc(f.date||f.ds)}。</div></div>
+    <div class="istory"><p><b>🔎 賣股的錢去哪了？</b> ${st.money}</p>${st.margin?`<p><b>融資觀察：</b>${st.margin}</p>`:''}</div>`;
+  }
+  return `<div class="card pad" style="margin-bottom:14px"><div class="row" style="justify-content:space-between"><h3 style="margin:0">🏦 外資買賣超與融資（台股）</h3>${d.length?`<button class="btn sm" data-plinst>更新</button>`:''}</div>${body}
+    <p class="hint">資料來自證交所公開資料，約收盤後才更新。「錢有沒有換成美元匯出」沒有每日官方數字，這裡用<b>外資賣超＋台幣走勢</b>做推論，不是確切金額；正式的外資匯出入統計由央行與證交所按月公布，會有時間落差。</p></div>`;
+}
+function instAlertCheck(){
+  const al=S.alerts;let ch=false;const d=INST.days;if(!d.length)return false;const f=d[0];
+  if(Date.now()-new Date(f.ds.slice(0,4)+'-'+f.ds.slice(4,6)+'-'+f.ds.slice(6)+'T12:00:00')>5*864e5)return false;
+  if(Math.abs(f.fx)>=3e10){const k='inst|fx|'+f.ds;if(!al.seen.includes(k)){al.seen.push(k);ch=true;fireAlert({sym:'',title:`外資${f.fx<0?'大賣':'大買'} ${yi0(Math.abs(f.fx))}`,msg:f.fx<0?'外資單日賣超金額很大，台股短線容易承壓；可到「股債規劃」看錢是留在台灣還是換匯匯出。':'外資單日買超金額很大，資金明顯流入台股。',dir:f.fx,sev:3,tag:k});}}
+  const m=INST.margin;if(m&&Math.abs(m.bal-m.prev)>=5e9){const k='inst|mg|'+m.ds;if(!al.seen.includes(k)){al.seen.push(k);ch=true;const up=m.bal>m.prev;fireAlert({sym:'',title:`融資單日${up?'增加':'減少'} ${yi0(Math.abs(m.bal-m.prev))}`,msg:up?'散戶借錢買股明顯增加，市場過熱時要留意回檔風險。':'融資明顯減少（可能是斷頭或主動降槓桿），賣壓可能正在釋放。',dir:up?-1:1,sev:2,tag:k});}}
+  return ch;
+}
+
+/* ---------- 華爾街大額動向（用美股大盤 ETF 成交量推估） ---------- */
+function flowRows(){return FLOW_SYMS.map(s=>{const rec=DATA[s],p=prep(rec);if(!p||rec.source==='demo')return null;const A=p.A;return {sym:s,A,vr:A.volRatio,ch:A.chgPct,date:A.date};}).filter(Boolean);}
+function flowWord(r){const vr=r.vr;if(!isNum(vr))return '成交量資料不足。';
+  if(vr>=1.5&&r.ch<=-1)return `成交量是平常的 ${vr.toFixed(1)} 倍且下跌：<b>有大額賣出的跡象</b>。`;
+  if(vr>=1.5&&r.ch>=1)return `成交量是平常的 ${vr.toFixed(1)} 倍且上漲：<b>有大額買進的跡象</b>。`;
+  if(vr>=1.5)return `成交量是平常的 ${vr.toFixed(1)} 倍，但價格變動不大：大額換手，方向還不明。`;
+  return `成交量約是平常的 ${vr.toFixed(1)} 倍，沒有異常的大額進出。`;}
+function flowCardHTML(){
+  const rows=flowRows(),dx=prep(DATA['DX-Y.NYB']),tw=twdInfo();
+  return `<div class="card pad" style="margin-bottom:14px"><h3 style="margin:0 0 6px">🗽 華爾街大額買賣與換匯（推估）</h3>
+  ${rows.length?rows.map(r=>`<div class="frow"><b>${esc(nameOf(r.sym))}</b> <span class="flat">${esc(r.sym)}</span> <span class="${cls(r.ch)}">${arrow(r.ch)} ${fmtPct(r.ch,2)}</span><div>${flowWord(r)}</div></div>`).join(''):'<p class="hint">美股資料載入中…</p>'}
+  <div class="frow"><b>換匯（美元／台幣）</b> ${dx?`美元指數 <span class="${cls(dx.A.chgPct)}">${fmtPct(dx.A.chgPct,2)}</span>　`:''}${tw?`美元兌台幣 ${fmt(tw.last,3)}（<span class="${cls(tw.d1)}">${fmtPct(tw.d1,2)}</span>）`:''}<div class="flat">美元指數急升、台幣同步走貶時，代表全球資金在換成美元；對台股通常是壓力。</div></div>
+  <p class="hint">沒有免費的「每日華爾街機構買賣」資料；機構實際持股要看美國 SEC 的 13F 申報（每季公布、約晚 45 天）。這裡只能用 SPY、QQQ 的成交量與價格<b>推估</b>大額資金方向，僅供參考。</p></div>`;
+}
+function flowAlertCheck(){
+  const al=S.alerts;let ch=false;
+  flowRows().forEach(r=>{if(!(r.vr>=1.8&&Math.abs(r.ch)>=1))return;if(Date.now()-new Date(r.date+'T12:00:00')>4*864e5)return;
+    const k='flow|'+r.sym+'|'+r.date;if(al.seen.includes(k))return;al.seen.push(k);ch=true;
+    fireAlert({sym:r.sym,title:`華爾街大額${r.ch<0?'賣出':'買進'}跡象：${nameOf(r.sym)} ${fmtPct(r.ch,1)}`,msg:`成交量是平常的 ${r.vr.toFixed(1)} 倍。美股${r.ch<0?'大量賣出':'大量買進'}常牽動隔天台股開盤。`,dir:r.ch,sev:3,tag:k});});
+  return ch;
+}
+
+/* ---------- 持股健檢 ---------- */
+function holdings(){
+  const m=new Map();
+  S.portfolio.forEach(p=>{if(!(p.shares>0&&p.cost>0))return;const h=m.get(p.symbol)||{sym:p.symbol,shares:0,cc:0,notes:[]};h.shares+=p.shares;h.cc+=p.shares*p.cost;m.set(p.symbol,h);});
+  const fx=fxRate();
+  return [...m.values()].map(h=>{
+    const rec=DATA[h.sym],p=prep(rec),tw=mkOf(h.sym)==='TW',cost=h.cc/h.shares,last=p?p.A.last:null;
+    const k=tw?1:fx;const st=p?maState(rec):null;
+    let stag=false,r60=null,rng=null;
+    if(p&&rec.bars.length>=60){const c=rec.bars.slice(-60).map(b=>b.c);r60=(c[c.length-1]/c[0]-1)*100;rng=(Math.max(...c)-Math.min(...c))/(c.reduce((a,b)=>a+b,0)/c.length)*100;stag=Math.abs(r60)<6&&rng<18;}
+    const pl=last?(last/cost-1)*100:null,kind=CORE_SET.has(h.sym)?'core':isBondSym(h.sym)?'bond':'other';
+    let v='ok',vt='';
+    if(kind==='other'&&pl!=null){const weak=st&&st.n&&st.L.filter(x=>(x.k===60||x.k===240)&&!x.na).every(x=>!x.above)&&st.L.some(x=>(x.k===60||x.k===240)&&!x.na);
+      if(pl<=-5&&stag){v='stuck';vt='賠錢又一直不動：資金被卡住，是優先的換股候選。';}
+      else if(pl<=-5&&weak){v='weak';vt='賠錢而且跌破季線與年線：趨勢偏弱，列入換股候選，可分批處理。';}
+      else if(pl<=-5){v='watch';vt='雖然賠錢，但走勢還沒有明顯轉弱；可以等反彈到月線附近再處理，或先觀察。';}
+      else vt=pl>=0?'目前有賺，正常持有。':'小幅虧損，在正常波動內。';}
+    else if(kind==='core')vt='核心標的：長期持有，用「分批加碼」而不是頻繁進出。';
+    else if(kind==='bond')vt='債券部位：用來降低整體波動。';
+    return {sym:h.sym,shares:h.shares,cost,last,pl,kind,v,vt,st,stag,r60,rng,tw,val:last&&k?last*h.shares*k:null,costVal:k?h.cc*k:null,k,rec};});
+}
+function planOut(hs){const P=S.plan;if(Array.isArray(P.out))return new Set(P.out);return new Set(hs.filter(h=>h.v==='stuck'||h.v==='weak').map(h=>h.sym));}
+function healthCardHTML(hs){
+  if(!S.portfolio.length)return `<div class="card pad" style="margin-bottom:14px"><h3 style="margin:0 0 6px">🩺 持股健檢</h3><p class="hint">還沒有輸入持股。到「我的資料」新增你買的股票（股數與成本價），這裡就會自動標出哪些是「賠錢又不動」的股票。</p><button class="btn pri sm" data-tab-go="data">去輸入持股</button></div>`;
+  const out=planOut(hs),cand=hs.filter(h=>h.v==='stuck'||h.v==='weak'),tot=hs.reduce((s,h)=>s+(h.val||0),0),cv=cand.reduce((s,h)=>s+(h.val||0),0);
+  const order={stuck:0,weak:1,watch:2,ok:3};const sorted=hs.slice().sort((a,b)=>(order[a.v]-order[b.v])||((a.pl||0)-(b.pl||0)));
+  const tag={stuck:'卡住',weak:'偏弱',watch:'觀察',ok:''};
+  return `<div class="card pad" style="margin-bottom:14px"><h3 style="margin:0 0 4px">🩺 持股健檢</h3>
+  <p class="sum">共 ${hs.length} 檔：<b>${cand.length} 檔是換股候選</b>${tot>0&&cv>0?`（約占持股市值 ${(cv/tot*100).toFixed(0)}%）`:''}。勾選的會放進下面的「換股計畫」。</p>
+  ${sorted.map(h=>`<div class="hrow v-${h.v}"><div class="hname">${h.kind==='other'?`<label><input type="checkbox" data-plout="${esc(h.sym)}" ${out.has(h.sym)?'checked':''}> <b>${esc(nameOf(h.sym))}</b></label>`:`<b>${esc(nameOf(h.sym))}</b>`} <span class="flat">${esc(codeOf(h.sym))}</span>${tag[h.v]?` <span class="vtag v-${h.v}">${tag[h.v]}</span>`:''}</div>
+    <div class="hnum">${h.shares.toLocaleString()} 股　成本 ${fmt(h.cost,decOf(h.sym))} → 現價 ${h.last?fmt(h.last,decOf(h.sym)):'載入中'}　${h.pl!=null?`<b class="${cls(h.pl)}">${fmtPct(h.pl,1)}</b>${h.last?`（${h.pl>=0?'+':'−'}${money(Math.abs((h.last-h.cost)*h.shares))} ${h.tw?'元':'美元'}）`:''}`:''}</div>
+    ${h.st?`<div class="maline">${maPills(h.st)}</div>`:''}<div class="hv">${h.vt}${h.stag&&h.kind==='other'?` <span class="flat">（近 60 日只變動 ${fmtPct(h.r60,1)}，高低差 ${h.rng.toFixed(0)}%）</span>`:''}</div></div>`).join('')}
+  <p class="hint">判斷方式：成本相對現價虧損超過 5%，且「近 60 日幾乎沒動」或「跌破季線與年線」就列為候選。這是統計規則，沒有考慮公司基本面；若你知道公司有重大利多（例如訂單、題材），可以取消勾選。</p></div>`;
+}
+
+/* ---------- 換股計畫 ---------- */
+function coreFactor(sym){const rec=DATA[sym],st=maState(rec);if(!st||!st.n)return {f:1,t:'資料載入中，先照計畫。',st};
+  const g=k=>st.L.find(x=>x.k===k&&!x.na);
+  if(g(240)&&!g(240).above)return {f:0,t:'已跌破年線：這個月先暫停，資金放短債，等站回年線再補。',st};
+  if(g(60)&&!g(60).above)return {f:.5,t:'已跌破季線：只買一半，另一半先放短債。',st};
+  return {f:1,t:'在季線與年線之上，照計畫買。',st};}
+function allocBar(parts){const t=parts.reduce((s,x)=>s+x.v,0)||1;return `<div class="abar">${parts.map(x=>x.v>0?`<span class="${x.c}" style="flex:${(x.v/t*100).toFixed(2)}" title="${esc(x.n)} ${(x.v/t*100).toFixed(0)}%">${(x.v/t*100)>=8?esc(x.n)+' '+(x.v/t*100).toFixed(0)+'%':''}</span>`:'').join('')}</div>`;}
+function rotateCardHTML(hs){
+  const P=S.plan,fx=fxRate(),out=planOut(hs),sel=hs.filter(h=>out.has(h.sym)&&h.last);
+  const cw=Object.entries(P.core),sw=cw.reduce((s,[,v])=>s+v,0)||1;
+  const tot=hs.reduce((s,h)=>s+(h.val||0),0),bondV=hs.filter(h=>h.kind==='bond').reduce((s,h)=>s+(h.val||0),0),coreV=hs.filter(h=>h.kind==='core').reduce((s,h)=>s+(h.val||0),0),otherV=tot-bondV-coreV;
+  const N=P.months,FEE=.0045;
+  const needFx=sel.some(h=>!h.tw)&&!fx;
+  const hdr=`<div class="plctl"><label>換股期間 <select class="fld sel" data-plm>${[3,6,9,12].map(n=>`<option value="${n}" ${n===N?'selected':''}>${n} 個月</option>`).join('')}</select></label>
+    <label>債券比例 <select class="fld sel" data-plb>${[0,10,20,30,40,50].map(n=>`<option value="${n}" ${n===P.bondPct?'selected':''}>${n}%</option>`).join('')}</select></label>
+    <span class="flat">核心比例：${cw.map(([k,v])=>`${esc(nameOf(k))} <input class="fld pw" type="number" min="0" max="100" step="5" value="${v}" data-plc="${esc(k)}">`).join('　')}%</span></div>`;
+  const alloc=tot>0?`<div class="alloc"><div class="flat">目前持股配置</div>${allocBar([{n:'核心',v:coreV,c:'a1'},{n:'其他個股',v:Math.max(0,otherV),c:'a2'},{n:'債券',v:bondV,c:'a3'}])}<div class="flat">目標配置（債 ${P.bondPct}%，其餘為核心）</div>${allocBar([{n:'核心股票',v:100-P.bondPct,c:'a1'},{n:'債券',v:P.bondPct,c:'a3'}])}</div>`:'';
+  const core=cw.map(([s])=>{const f=coreFactor(s),rec=DATA[s],p=prep(rec);return {s,f,last:p?p.A.last:null};});
+  const coreRows=`<div class="corebox"><b>核心標的現況（決定這個月買多少）</b>${core.map(c=>`<div class="corerow"><span><b>${esc(nameOf(c.s))}</b> ${c.last?fmt(c.last,decOf(c.s)):'載入中'}</span><span class="maline">${c.f.st?maPills(c.f.st):''}</span><span class="hv">本月買進 <b>${(c.f.f*100).toFixed(0)}%</b>：${c.f.t}</span></div>`).join('')}</div>`;
+  if(!sel.length)return `<div class="card pad" style="margin-bottom:14px"><h3 style="margin:0 0 6px">🔁 換股計畫（慢慢換到核心）</h3>${hdr}${alloc}<p class="hint">目前沒有勾選的換股候選（或價格還在載入）。有賠錢又不動的股票時，會自動出現在上面的「持股健檢」，勾選後這裡就會排出每個月的賣出與買進。</p>${coreRows}</div>`;
+  const items=sel.map(h=>{const per=Math.floor(h.shares/N);return {h,per,rest:h.shares-per*(N-1),net:h.val*(1-FEE)};});
+  const totNet=items.reduce((s,x)=>s+(x.net||0),0);
+  const bondSyms=P.bonds,months=[];
+  for(let m=1;m<=N;m++){
+    const sells=items.map(x=>({h:x.h,sh:m<N?x.per:x.rest})).filter(x=>x.sh>0);
+    const got=sells.reduce((s,x)=>s+(x.h.k?x.sh*x.h.last*x.h.k*(1-FEE):0),0);
+    const bondAmt=got*P.bondPct/100;let coreAmt=got-bondAmt;
+    const buys=core.map(c=>{const w=(P.core[c.s]||0)/sw,f=m===1?c.f.f:1,want=coreAmt*w,real=want*f;return {c,want,real,park:want-real};});
+    const park=buys.reduce((s,b)=>s+b.park,0);
+    months.push({m,sells,got,bondAmt,buys,park});
+  }
+  const sh=(amt,sym)=>{const c=DATA[sym],p=prep(c);if(!p)return '';const px=p.A.last,k=mkOf(sym)==='TW'?1:fx;if(!k)return '';const n=amt/(px*k);if(!(amt>=1))return '';return `（約 ${n>=10?Math.floor(n):n.toFixed(1)} 股）`;};
+  const b1=esc(nameOf(bondSyms[0]||''));
+  return `<div class="card pad" style="margin-bottom:14px"><h3 style="margin:0 0 4px">🔁 換股計畫（慢慢換到核心）</h3>${hdr}${alloc}
+  <p class="sum">計畫把 <b>${sel.length} 檔</b>（${sel.map(h=>esc(nameOf(h.sym))).join('、')}）分 <b>${N} 個月</b>賣出，預估扣掉交易成本後共約 <b>${money(totNet)} 元</b>，其中 ${P.bondPct}% 進債券、${100-P.bondPct}% 進核心。${needFx?'<br><span class="down">美股持股需要匯率才能換算成台幣，匯率載入後會更新。</span>':''}</p>
+  ${coreRows}
+  <div class="plmons">${months.map(M=>`<div class="plmon"><div class="plm"><b>第 ${M.m} 個月</b>${M.m===1?' <span class="vtag v-watch">本月</span>':''}</div>
+    <div><span class="flat">賣出</span>：${M.sells.map(x=>`${esc(nameOf(x.h.sym))} ${x.sh.toLocaleString()} 股`).join('、')||'—'}</div>
+    <div><span class="flat">約得</span>：${money(M.got)} 元（已扣約 0.45% 成本）</div>
+    <div><span class="flat">買債券</span>：${money(M.bondAmt)} 元（${bondSyms.map(b=>esc(nameOf(b))).join(' ／ ')}，各約一半）</div>
+    <div><span class="flat">買核心</span>：${M.buys.map(b=>`${esc(nameOf(b.c.s))} ${money(b.real)} 元${sh(b.real,b.c.s)}`).join('；')}</div>
+    ${M.park>1?`<div class="flat">依今天線位，約 ${money(M.park)} 元先放短債（${b1}）暫停，站穩後再補。</div>`:''}</div>`).join('')}</div>
+  <ul class="plrules"><li><b>固定日子執行</b>：每月同一天（例如月初）賣一份、買一份，不用猜高低點，這樣就算賣在低點也只是其中一份。</li>
+  <li><b>遇到反彈就加快</b>：若某檔賠錢股漲回月線附近，可以把下個月那份提前賣掉，趁機減少被套的時間。</li>
+  <li><b>核心不追高也不硬撐</b>：核心標的跌破季線只買一半、跌破年線先暫停並放短債，站回再補（這是本工具的範例紀律，可依自己習慣調整）。</li>
+  <li><b>交易成本</b>：台股賣出要付約 0.3% 證交稅（ETF 約 0.1%）加手續費，計畫統一預留約 0.45%（偏保守）；實際以券商折扣為準。</li></ul>
+  <p class="hint">這是依你輸入的持股與統計規則排出的「演練表」，不是投資建議。基本面、稅務與個人財務狀況請自行評估，必要時詢問合格的理財顧問。</p></div>`;
+}
+
+/* ---------- 債券 ---------- */
+const BOND_CAND=[
+ {sym:'00694B.TWO',name:'富邦美債1-3',pick:true,tag:'1～3 年期美國公債，季配息。天期短，對利率變動比較不敏感，波動小。'},
+ {sym:'00865B.TW',name:'國泰US短期公債',pick:true,tag:'短天期美國公債，不配息（價格累積）。最接近「現金」的債券，適合當換股期間的停泊處。'},
+ {sym:'00719B.TWO',name:'元大美債1-3',pick:false,tag:'同樣是 1～3 年期美國公債，可當作第 3 個替代選項。'},
+ {sym:'00679B.TWO',name:'元大美債20年（對照用）',pick:false,tag:'20 年以上長債：利率一變動價格就大波動，<b>不屬於「穩定」</b>，放進來只是對照。'}];
+function maxDD(bars){let pk=-Infinity,dd=0;bars.forEach(b=>{pk=Math.max(pk,b.c);dd=Math.min(dd,b.c/pk-1);});return dd*100;}
+function bondStat(sym){const rec=DATA[sym],p=prep(rec);if(!p||rec.source==='demo')return null;const A=p.A,b=rec.bars.slice(-250);return {last:A.last,r:A.r250,vola:A.vola,dd:maxDD(b),n:b.length,st:maState(rec)};}
+function bondCardHTML(){
+  const ref=['0050.TW','SPY'].map(s=>{const p=prep(DATA[s]);return p?{s,vola:p.A.vola,dd:maxDD(DATA[s].bars.slice(-250))}:null;}).filter(Boolean);
+  return `<div class="card pad" style="margin-bottom:14px"><h3 style="margin:0 0 4px">🧱 債券候選（股債平衡用）</h3>
+  <p class="sum">我挑了 <b>2 檔「短天期美國公債」ETF</b> 當穩定的債券部位：<b>富邦美債1-3（00694B）</b>＋<b>國泰US短期公債（00865B）</b>。理由：美國公債信用風險低、天期短所以對利率不敏感，而且用台幣就買得到。</p>
+  <div class="bgrid">${BOND_CAND.map(c=>{const s=bondStat(c.sym);return `<div class="bcard${c.pick?' pick':''}"><div><b>${c.name}</b> <span class="flat">${esc(codeOf(c.sym))}</span>${c.pick?' <span class="vtag v-ok">我挑的</span>':''}</div><p class="flat" style="margin:4px 0">${c.tag}</p>
+    ${s?`<div class="bstat"><span>近 1 年 <b class="${cls(s.r)}">${fmtPct(s.r,1)}</b></span><span>年化波動 <b>${isNum(s.vola)?s.vola.toFixed(1)+'%':'—'}</b></span><span>最大回落 <b class="${cls(s.dd)}">${s.dd.toFixed(1)}%</b></span></div>${s.st?`<div class="maline">${maPills(s.st)}</div>`:''}`:'<p class="hint" style="margin:0">行情載入中…</p>'}</div>`;}).join('')}</div>
+  ${ref.length?`<p class="hint">對照：${ref.map(r=>`${esc(nameOf(r.s))} 年化波動 ${isNum(r.vola)?r.vola.toFixed(1)+'%':'—'}、近 1 年最大回落 ${r.dd.toFixed(1)}%`).join('；')}。債券的波動與回落越小，越能在股市大跌時緩衝。</p>`:''}
+  <ul class="plrules"><li><b>匯率風險</b>：這些 ETF 持有美元資產，雖然用台幣買賣，台幣升值時會侵蝕報酬。</li><li><b>債券不保證在股市下跌時上漲</b>：2022 年與 2025 年都出現過股債同時下跌，所以才選短天期、降低利率風險。</li><li><b>配息與費用</b>以投信公告為準（00694B 為季配；00865B 目前沒有配息）。購買前請再到投信官網確認。</li></ul></div>`;
+}
+
+/* ---------- 專家方法（只整理重點、附原文連結，不轉載原文） ---------- */
+function expertCardHTML(){
+  const q=s=>'https://www.google.com/search?q='+encodeURIComponent(s),yt=s=>'https://www.youtube.com/results?search_query='+encodeURIComponent(s);
+  const a=(u,t)=>`<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${t}</a>`;
+  return `<div class="card pad" style="margin-bottom:14px"><h3 style="margin:0 0 4px">📚 兩位專家的方法重點</h3>
+  <p class="hint" style="margin:0 0 8px">以下是我依公開報導「用自己的話整理」的重點，不是原文，也不代表兩位專家使用或認可這個工具。他們每天的最新分析與警示，請直接看原頻道；觀點會隨行情改變，舊文章的結論不一定適用現在。</p>
+  <div class="two"><div class="xcol"><h4>杜金龍（偏重籌碼與紀律）</h4><ul>
+   <li><b>看融資與成交量</b>：用融資餘額、成交量占貨幣供給的比重判斷散戶是不是太熱（本頁「融資」就是這個）。</li>
+   <li><b>看外資與匯率</b>：台幣止貶、外資回補，行情比較容易回穩（本頁「錢去哪了」就是這個）。</li>
+   <li><b>追蹤大戶持股</b>：大戶連續增加持股的標的，視為籌碼集中的參考（需看集保資料，本工具未內建）。</li>
+   <li><b>核心權值分批、保留資金彈性</b>：大型權值股分幾筆進場、不一次滿倉；題材股偏重價差操作（本頁「換股計畫」採用分批做法）。</li>
+   <li><b>用均線守紀律</b>：跌破關鍵均線就依原先設定處理（本工具的均線警示）。</li></ul>
+   <div class="xlinks">${a('https://wantrich.chinatimes.com/news/20261111900006-420101','2026/11 融資、外資回補與台幣的看法')} ${a('https://wantrich.chinatimes.com/news/20260514900003-420101','2026/5 頭部量與融資餘額')} ${a('https://wantrich.chinatimes.com/news/20260805900005-420101','2026/8 核心持股分批布局')} ${a(yt('杜金龍 鈔錢部署'),'YouTube：鈔錢部署')} ${a(q('杜金龍 今日 台股 分析'),'搜尋最新分析')}</div></div>
+   <div class="xcol"><h4>闕又上（偏重長期配置）</h4><ul>
+   <li><b>核心用指數型 ETF</b>：以 S&amp;P 500（如 SPY）與 0050 這類大盤型 ETF 當長期核心，而不是靠挑個股。</li>
+   <li><b>0050 長期總報酬</b>：他曾比較 0050 與高股息 ETF，指出長期總報酬 0050 較佳（見下方連結）。</li>
+   <li><b>債券是防守</b>：債券的任務是降低波動；偏好短天期、信用好的債，而不是追逐長天期公債的價差。</li>
+   <li><b>定期再平衡</b>：股債比例偏離目標時，賣掉漲多的、補回比例（本頁「目前配置 vs 目標配置」）。</li></ul>
+   <div class="xlinks">${a('https://wantrich.chinatimes.com/news/20250107900337-420401','2025/1 0050 與高股息 ETF 的比較')} ${a(q('闕又上 股債配置 0050 SPY'),'搜尋闕又上的股債配置文章')} ${a(yt('闕又上'),'YouTube：闕又上')}</div></div></div>
+  <p class="hint">各位專家的看法不同，也都不是保證獲利；請把它們當作「參考框架」，最後仍要依自己的資金與承受度決定。</p></div>`;
+}
+
+/* ---------- 規劃分頁 ---------- */
+function renderPlan(){
+  const el=$('#planWrap');if(!el)return;
+  const need=['TWD=X','0050.TW','2330.TW','SPY','QQQ','DX-Y.NYB',...S.plan.bonds,...BOND_CAND.map(b=>b.sym),...Object.keys(S.plan.core),...S.portfolio.map(p=>p.symbol)];
+  [...new Set(need)].forEach(x=>{if(!DATA[x])loadSymbol(x,{});});
+  if(!INST.tried&&!INST.busy)fetchInst(false);
+  const hs=holdings();
+  el.innerHTML=`<p class="hint" style="margin:0 0 12px">這一頁把「外資／融資／華爾街」的大額資金動向、你的持股健檢、慢慢換到核心（0050／台積電／SPY）的計畫，以及穩定債券放在一起，全部用白話說明，不需要看懂 K 線。內容是統計與演練，不是投資建議。</p>
+  ${instCardHTML()}${flowCardHTML()}${healthCardHTML(hs)}${rotateCardHTML(hs)}${bondCardHTML()}${expertCardHTML()}`;
+}
+function bindPlan(){
+  document.addEventListener('click',e=>{const t=e.target;if(!t.closest)return;
+    if(t.closest('[data-plinst]')){fetchInst(true);return;}});
+  document.addEventListener('change',e=>{const t=e.target;if(!t.dataset)return;const P=S.plan;
+    if(t.dataset.plout!==undefined){const hs=holdings(),set=planOut(hs);t.checked?set.add(t.dataset.plout):set.delete(t.dataset.plout);P.out=[...set];save();renderPlan();return;}
+    if(t.dataset.plm!==undefined){P.months=+t.value;save();renderPlan();return;}
+    if(t.dataset.plb!==undefined){P.bondPct=+t.value;save();renderPlan();return;}
+    if(t.dataset.plc!==undefined){const v=parseFloat(t.value);P.core[t.dataset.plc]=v>=0&&v<=100?v:0;save();renderPlan();return;}});
+}
+function startPlanTimers(){
+  const go=()=>FLOW_SYMS.forEach(s=>loadSymbol(s,{}));
+  setTimeout(go,9000);setInterval(go,300000);
+  setTimeout(()=>fetchInst(false),12000);setInterval(()=>fetchInst(false),1200000);
+}
+
+window.__ML={radarCalc,radarAlerts,leadStat,leadersHit,leaderSyms,get S(){return S;},DATA,UI,Chart,setDemo,useDemo,demoBars,parseCSV,analyze,detectEvents,calcInd,prep,checkAlerts,fireAlert,maState,maLevel,parseBFI,parseMargin,holdings,INST,instStory,renderPlan};
+bindAlerts();bindNews();bindRadar();bindPlan();
+init();startPlanTimers();
 </script>
 </body>
 </html>
