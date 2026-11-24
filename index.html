@@ -231,6 +231,15 @@ html[data-simple="1"] .tab-b[data-tab=table]{display:none}
  .alrow,.alform{grid-template-columns:1fr!important}
  .eprice .spk{margin-left:0}.egrid{gap:10px}
 }
+
+.rgauge{display:flex;align-items:center;gap:14px;margin-top:10px;flex-wrap:wrap}
+.rnum{font-size:calc(34px*var(--z));font-weight:700;letter-spacing:-.02em;line-height:1}.rnum small{font-size:calc(14px*var(--z));font-weight:500;color:var(--ink2);margin-left:2px}
+.rbar{flex:1;min-width:140px;height:12px;border-radius:99px;background:var(--wash);overflow:hidden;border:1px solid var(--border)}
+.rbar i{display:block;height:100%;border-radius:99px;background:var(--muted)}.rgauge.lv1 .rbar i{background:#d9a21b}.rgauge.lv2 .rbar i,.rgauge.lv3 .rbar i{background:#e8742a}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,calc(250px*var(--z))),1fr));gap:12px;margin-top:6px}
+.rgt{font-size:calc(12.5px*var(--z));color:var(--ink2);margin-bottom:5px;font-weight:600}.rchips{display:flex;flex-wrap:wrap;gap:6px}
+.rchip{display:inline-flex;gap:6px;align-items:center;padding:4px 9px;border:1px solid var(--border);border-radius:8px;font-size:calc(12.5px*var(--z));background:var(--surface)}
+.rchip.s1{border-color:#d9a21b;background:color-mix(in srgb,#d9a21b 12%,var(--surface))}.rchip.s2{border-color:#e8742a;border-width:2px;background:color-mix(in srgb,#e8742a 14%,var(--surface))}
 </style>
 </head>
 <body>
@@ -341,7 +350,7 @@ const LEADERS_DEFAULT=[
 const DEFAULT_STATE={v:1,
   watch:['2330.TW','2317.TW','2454.TW','2308.TW','0050.TW','NVDA','AAPL','MSFT','TSLA','SPY'],
   portfolio:[],notes:'',
-  alerts:{rules:[],log:[],seen:[],base:[],news:{on:true,min:4,items:[],seen:[],last:0},leaders:LEADERS_DEFAULT,opts:{leadOn:true,event:true,evSev:2,bigMove:true,bigPct:5,notify:false,sound:false}},
+  alerts:{rules:[],log:[],seen:[],base:[],rlv:0,news:{on:true,min:4,items:[],seen:[],last:0},leaders:LEADERS_DEFAULT,opts:{leadOn:true,event:true,evSev:2,bigMove:true,bigPct:5,notify:false,sound:false}},
   settings:{simple:true,theme:'dark',ud:'tw',mode:'dual',z:1.15,type:'area',range:'6M',auto:true,
     ind:{ma:true,boll:false,vol:true,rsi:false,macd:false},
     single:'2330.TW',left:'2330.TW',right:'NVDA',compare:['^TWII','^GSPC','2330.TW','NVDA'],cmpSlot:{}}};
@@ -350,7 +359,7 @@ function mergeState(base,x){
   if(Array.isArray(x.watch))o.watch=x.watch.filter(s=>typeof s==='string');
   if(Array.isArray(x.portfolio))o.portfolio=x.portfolio.filter(p=>p&&p.symbol);
   if(typeof x.notes==='string')o.notes=x.notes;
-  if(x.alerts&&typeof x.alerts==='object'){const a=x.alerts;if(Array.isArray(a.rules))o.alerts.rules=a.rules.filter(r=>r&&r.sym&&typeof r.type==='string');if(Array.isArray(a.log))o.alerts.log=a.log.slice(0,100);if(Array.isArray(a.seen))o.alerts.seen=a.seen.slice(-400);if(Array.isArray(a.base))o.alerts.base=a.base.slice(-200);if(a.news&&typeof a.news==='object'){const n=a.news,d=o.alerts.news;if(typeof n.on==='boolean')d.on=n.on;if(n.min===3||n.min===4||n.min===5)d.min=n.min;if(Array.isArray(n.items))d.items=n.items.filter(x=>x&&x.id&&x.title&&/^https?:/.test(x.link||'')&&x.t>0).slice(0,30);if(Array.isArray(n.seen))d.seen=n.seen.slice(-500);if(n.last>0)d.last=n.last;}if(Array.isArray(a.leaders)&&a.leaders.length)o.alerts.leaders=a.leaders.filter(l=>l&&l.sym).map(l=>({sym:String(l.sym),name:l.name||'',th:+l.th>0?+l.th:3,on:l.on!==false,tw:Array.isArray(l.tw)?l.tw.filter(x=>typeof x==='string'):[],why:l.why||''}));if(a.opts&&typeof a.opts==='object')Object.assign(o.alerts.opts,a.opts);}
+  if(x.alerts&&typeof x.alerts==='object'){const a=x.alerts;if(Array.isArray(a.rules))o.alerts.rules=a.rules.filter(r=>r&&r.sym&&typeof r.type==='string');if(Array.isArray(a.log))o.alerts.log=a.log.slice(0,100);if(Array.isArray(a.seen))o.alerts.seen=a.seen.slice(-400);if(Array.isArray(a.base))o.alerts.base=a.base.slice(-200);if(typeof a.rlv==='number')o.alerts.rlv=Math.max(0,Math.min(3,a.rlv|0));if(a.news&&typeof a.news==='object'){const n=a.news,d=o.alerts.news;if(typeof n.on==='boolean')d.on=n.on;if(n.min===3||n.min===4||n.min===5)d.min=n.min;if(Array.isArray(n.items))d.items=n.items.filter(x=>x&&x.id&&x.title&&/^https?:/.test(x.link||'')&&x.t>0).slice(0,30);if(Array.isArray(n.seen))d.seen=n.seen.slice(-500);if(n.last>0)d.last=n.last;}if(Array.isArray(a.leaders)&&a.leaders.length)o.alerts.leaders=a.leaders.filter(l=>l&&l.sym).map(l=>({sym:String(l.sym),name:l.name||'',th:+l.th>0?+l.th:3,on:l.on!==false,tw:Array.isArray(l.tw)?l.tw.filter(x=>typeof x==='string'):[],why:l.why||''}));if(a.opts&&typeof a.opts==='object')Object.assign(o.alerts.opts,a.opts);}
   if(x.settings&&typeof x.settings==='object'){const s=x.settings;for(const k of Object.keys(o.settings)){if(s[k]===undefined)continue;
     if(k==='ind'&&typeof s.ind==='object')Object.assign(o.settings.ind,s.ind);else if(k==='cmpSlot'&&typeof s[k]==='object')o.settings.cmpSlot=s[k];else o.settings[k]=s[k];}}
   return o;
@@ -390,7 +399,8 @@ const inflight=new Map();
 let running=0;const waiters=[];
 async function limit(fn){while(running>=4)await new Promise(r=>waiters.push(r));running++;try{return await fn();}finally{running--;const w=waiters.shift();if(w)w();}}
 
-async function fetchText(url,ms){const ac=new AbortController();const t=setTimeout(()=>ac.abort(),ms||8000);
+let jNext=0;async function jinaGate(){const n=Date.now(),at=Math.max(n,jNext);jNext=at+350;if(at>n)await new Promise(r=>setTimeout(r,at-n));}
+async function fetchText(url,ms){if(url.startsWith('https://r.jina.ai/'))await jinaGate();const ac=new AbortController();const t=setTimeout(()=>ac.abort(),ms||8000);
   try{const r=await fetch(url,{signal:ac.signal,cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return await r.text();}finally{clearTimeout(t);}}
 /* 連線路線：Yahoo 沒有開放跨站讀取，改經 r.jina.ai 公開中繼；FinMind、證交所可直接連線（已在 Chrome 實測） */
 const ROUTE={direct:u=>u,jina:u=>'https://r.jina.ai/'+u,allorigins:u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u)};
@@ -399,8 +409,10 @@ const finalErr=m=>Object.assign(new Error(m),{final:true});
 async function via(url,parse,routes){
   let last;
   for(const r of routes){
-    try{return parse(await fetchText(ROUTE[r](url)));}
-    catch(e){last=e;if(e&&e.final)throw e;}
+    for(let k=0,n=r==='jina'?3:1;k<n;k++){
+      try{return parse(await fetchText(ROUTE[r](url)));}
+      catch(e){last=e;if(e&&e.final)throw e;if(k<n-1)await new Promise(q=>setTimeout(q,1200*(k+1)));}
+    }
   }
   throw last||new Error('無法連線');
 }
@@ -897,7 +909,7 @@ function renderBanner(){
   if(demo)h+=`<div class="banner"><b>⚠ 目前畫面包含「示範資料」</b><span>這是電腦模擬出來的假行情，只用來展示功能，不能拿來做任何判斷。</span><button class="btn sm" data-act="live">改抓真實行情</button></div>`;
   if(miss.length>2)h+=`<div class="banner"><b>⚠ 連不到行情來源（${miss.length} 檔失敗）</b><span>可能是公司網路擋住外部連線。可以重試，或到「我的資料」匯入從券商／Yahoo 下載的 CSV。</span><button class="btn sm" data-act="retryall">重試</button><button class="btn sm" data-act="demo">先看示範資料</button></div>`;
   else if(stale)h+=`<div class="banner"><b>連線不穩</b><span>部分股票沿用上次存下的舊資料，畫面上的價格不是最新的。</span><button class="btn sm" data-act="retryall">重試</button></div>`;
-  h+=newsBannerHTML()+leadBannerHTML();
+  h+=radarBannerHTML()+newsBannerHTML()+leadBannerHTML();
   $('#banner').innerHTML=h;
 }
 /* --- 分析表 --- */
@@ -1027,7 +1039,7 @@ async function init(){
   const first=[...displayedSyms()],rest=[...INDEX_DEF.map(d=>d.sym),...S.watch,...leaderSyms()].filter(s=>!first.includes(s));
   await Promise.all(first.map(s=>loadSymbol(s,{})));
   rest.forEach(s=>loadSymbol(s,{}));
-  setInterval(renderMstat,30000);setTimeout(()=>scanNews(false),4000);setInterval(()=>scanNews(false),600000);
+  setInterval(renderMstat,30000);setTimeout(()=>scanNews(false),4000);setInterval(()=>scanNews(false),600000);setTimeout(refreshRadar,7000);setInterval(refreshRadar,300000);
   setInterval(()=>{if(S.settings.auto&&UI.anyOpen){const syms=[...new Set([...displayedSyms(),...INDEX_DEF.map(d=>d.sym),...leaderSyms(),...S.alerts.rules.filter(r=>r.on).map(r=>r.sym)])];syms.forEach(s=>loadSymbol(s,{force:true}));}},90000);
   setInterval(()=>{if(S.settings.auto&&UI.anyOpen&&(S.alerts.opts.event||S.alerts.opts.bigMove))[...S.watch,...leaderSyms()].forEach(s=>loadSymbol(s,{force:true}));},180000);
 }
@@ -1081,7 +1093,7 @@ function renderAlerts(){
   const permTxt={granted:'已允許',denied:'已被瀏覽器封鎖（請到網址列左邊的鎖頭圖示開啟通知）',default:'尚未允許',unsupported:'此瀏覽器不支援'}[perm];
   const opts=[...new Set([...S.watch,...displayedSyms()])].map(s=>`<option value="${esc(s)}">${esc(nameOf(s))}（${esc(codeOf(s))}）</option>`).join('');
   const pre=UI.alertSym||'';UI.alertSym='';
-  el.innerHTML=newsCardHTML(false)+leadersCardHTML()+`<div class="two"><div class="card pad"><h3>自動提醒</h3>
+  el.innerHTML=radarCardHTML()+newsCardHTML(false)+leadersCardHTML()+`<div class="two"><div class="card pad"><h3>自動提醒</h3>
     <div class="optrow"><label><input type="checkbox" data-alopt="event" ${o.event?'checked':''}> <b>異動提醒</b>：自選股出現新的異動時通知</label>
       <select class="fld sel" data-alopt="evSev" style="flex:none"><option value="3" ${o.evSev==3?'selected':''}>只通知重大</option><option value="2" ${o.evSev==2?'selected':''}>重大＋注意</option><option value="1" ${o.evSev==1?'selected':''}>全部（含提示）</option></select></div>
     <div class="optrow"><label><input type="checkbox" data-alopt="bigMove" ${o.bigMove?'checked':''}> <b>大波動提醒</b>：單日漲跌幅超過</label><input class="fld" type="number" min="1" max="30" step="0.5" data-alopt="bigPct" value="${esc(o.bigPct)}"><span>%</span></div>
@@ -1225,6 +1237,7 @@ function renderEasy(){
   const demo=Object.values(DATA).some(r=>r&&r.source==='demo');
   el.innerHTML=`
   ${demo?'<div class="banner" style="margin:0 0 12px"><b>目前顯示的是示範資料</b><span>不是真實行情，請先到「我的資料」確認網路或匯入 CSV。</span></div>':''}
+  ${radarCardHTML()}
   ${newsCardHTML(true)}
   <div class="card pad" style="margin-bottom:14px">
     <h3 style="margin:0 0 6px">今天的重點</h3>
@@ -1339,15 +1352,16 @@ function judgeNews(items){
 async function scanNews(manual){
   const N=S.alerts.news;if(NS.busy||(!N.on&&!manual))return;NS.busy=true;
   try{
-    const lists=await Promise.all(NEWS_FEEDS.map(async f=>{try{const items=parseFeed(await fetchText(ROUTE.jina(f.url),20000));NS.status[f.id]=items.length;return items.map(x=>({...x,src:f.name,sid:f.id}));}catch(e){NS.status[f.id]=-1;return [];}}));
+    const lists=await Promise.all(NEWS_FEEDS.map(async f=>{for(let k=0;k<2;k++){try{const items=parseFeed(await fetchText(ROUTE.jina(f.url),20000));if(!items.length)throw new Error('empty');NS.status[f.id]=items.length;return items.map(x=>({...x,src:f.name,sid:f.id}));}catch(e){if(k===0)await new Promise(q=>setTimeout(q,2000));}}NS.status[f.id]=-1;return [];}));
     const now=Date.now(),all=lists.flat().filter(x=>now-x.t<36*36e5&&x.t-now<36e5);
     if(all.length){
       const flagged=judgeNews(all);NS.last=now;N.last=now;
       const ids=new Set(flagged.map(x=>x.id));
       N.items=[...flagged,...N.items.filter(x=>!ids.has(x.id)&&now-x.t<36*36e5)].sort((a,b)=>b.sev-a.sev||b.t-a.t).slice(0,30);
+      const RR=radarCalc(),conf=RR.T!=null&&RR.T>=30;
       flagged.forEach(x=>{if(N.seen.includes(x.id))return;N.seen.push(x.id);
-        if(N.on&&x.sev>=N.min&&x.tone!=='pos'&&now-x.t<3*36e5){
-          fireAlert({sym:'',title:`${x.sev>=4?'‼ 重大風險':'！ 留意'}｜${x.cat}`,msg:`${x.title}（${x.src}）。${x.impact}${x.watch.length?'與你關注的「'+x.watch.join('、')+'」有關。':''}`,dir:0,sev:x.sev,sticky:x.sev>=4,tag:x.id});}});
+        if(N.on&&x.sev>=N.min&&x.tone!=='pos'&&now-x.t<3*36e5&&(x.sev>=5||x.multi||x.watch.length||conf)){
+          fireAlert({sym:'',title:`${x.sev>=4?'‼ 重大風險':'！ 留意'}｜${x.cat}`,msg:`${x.title}（${x.src}）。${x.impact}${x.watch.length?'與你關注的「'+x.watch.join('、')+'」有關。':''}${RR.T==null?'':conf?'市場也有反應（全球風險溫度 '+RR.T+'）。':'目前市場反應還不大（全球風險溫度 '+RR.T+'）。'}`,dir:0,sev:x.sev,sticky:x.sev>=4,tag:x.id});}});
       N.seen=N.seen.slice(-500);save();
     }
   }finally{NS.busy=false;}
@@ -1390,8 +1404,74 @@ function bindNews(){
     if(t.dataset.newsmin!==undefined){S.alerts.news.min=+t.value;save();return;}});
 }
 
-window.__ML={leadStat,leadersHit,leaderSyms,get S(){return S;},DATA,UI,Chart,setDemo,useDemo,demoBars,parseCSV,analyze,detectEvents,calcInd,prep,checkAlerts,fireAlert};
-bindAlerts();bindNews();
+/* ========== 全球風控雷達：各市場＋先行指標 → 風險溫度計 → 異常提醒 ========== */
+const RADAR=[
+ {sym:'^TWII',name:'台灣加權',g:'asia',w:1.5,t:'idx'},{sym:'^N225',name:'日經225',g:'asia',w:1,t:'idx'},{sym:'^KS11',name:'韓國綜合',g:'asia',w:1,t:'idx'},{sym:'^HSI',name:'香港恒生',g:'asia',w:.8,t:'idx'},{sym:'000001.SS',name:'上海綜合',g:'asia',w:.8,t:'idx'},
+ {sym:'^GDAXI',name:'德國 DAX',g:'eu',w:.7,t:'idx'},{sym:'^FTSE',name:'英國富時',g:'eu',w:.6,t:'idx'},{sym:'^FCHI',name:'法國 CAC',g:'eu',w:.6,t:'idx'},{sym:'^STOXX50E',name:'歐洲50',g:'eu',w:.7,t:'idx'},
+ {sym:'^GSPC',name:'S&P 500',g:'us',w:1.5,t:'idx'},{sym:'^IXIC',name:'那斯達克',g:'us',w:1.3,t:'idx'},{sym:'^DJI',name:'道瓊',g:'us',w:.8,t:'idx'},{sym:'^SOX',name:'費城半導體',g:'us',w:1.3,t:'idx'},
+ {sym:'^VIX',name:'VIX 恐慌指數',g:'fac',w:3,t:'vix'},{sym:'CL=F',name:'原油',g:'fac',w:.8,t:'oil'},{sym:'GC=F',name:'黃金',g:'fac',w:.6,t:'gold'},{sym:'^TNX',name:'美國10年債殖利率',g:'fac',w:.6,t:'yld'},{sym:'DX-Y.NYB',name:'美元指數',g:'fac',w:.5,t:'usd'},{sym:'TWD=X',name:'美元／台幣',g:'fac',w:1,t:'twd'},{sym:'JPY=X',name:'美元／日圓',g:'fac',w:.8,t:'jpy'}];
+const RG={asia:'亞洲市場',eu:'歐洲市場',us:'美國市場',fac:'風險指標'};
+const RWHY={'^VIX':'市場的「恐慌程度」。越高代表大家越緊張：20 以下算平靜，30 以上就是明顯恐慌。','CL=F':'原油價格。急漲會推高成本與通膨，急跌常代表需求轉弱，兩種都要留意。','GC=F':'黃金。資金擔心出事時會跑去買黃金，急漲代表避險情緒升高。','^TNX':'美國 10 年期公債殖利率，是全球資金成本的基準。急升會壓抑科技成長股。','DX-Y.NYB':'美元強弱。美元急升時，新興市場與台股常有資金流出的壓力。','TWD=X':'美元兌台幣。數字變大代表台幣貶值，外資可能正在賣台股。','JPY=X':'美元兌日圓。數字急降代表日圓急升，過去常引發全球「套利交易」平倉、股市急殺。','asia':'亞洲市場開盤早，常是台股當天走勢的先行訊號。','eu':'歐洲盤在台灣晚上交易，可以看出資金的風向。','us':'美股前一晚的表現，會直接影響台股隔天的開盤。'};
+const RLV=['平靜','留意','警戒','高風險'];
+const rcl=x=>Math.max(0,Math.min(1,x));
+function radarCalc(){
+  const rows=RADAR.map(d=>{const rec=DATA[d.sym],p=prep(rec);if(!p||rec.source==='demo')return {d,miss:true};
+    const A=p.A,age=(Date.now()-new Date(A.date+'T12:00:00'))/864e5;if(age>4)return {d,A,stale:true};
+    const z=A.dailySd>0?A.chgPct/A.dailySd:0;let s=0;
+    switch(d.t){case 'vix':s=Math.min(1,.6*rcl((A.last-16)/14)+.4*rcl(A.chgPct/25));break;case 'idx':s=rcl((-z-1)/3);break;case 'oil':case 'yld':s=rcl((Math.abs(z)-1.5)/2.5);break;case 'gold':case 'usd':case 'twd':s=rcl((z-1.5)/2.5);break;case 'jpy':s=rcl((-z-1.5)/2.5);break;}
+    return {d,A,z,s,live:AL_SRC.has(rec.source),last:rec.bars[rec.bars.length-1].t};});
+  const act=rows.filter(r=>r.s!=null),sw=act.reduce((a,r)=>a+r.d.w,0),live=act.filter(r=>r.live).length;
+  if(act.length<6)return {rows,T:null,L:0,n:act.length,live,text:'',top:[]};
+  const vix=act.find(r=>r.d.t==='vix');
+  const T=Math.round(rcl((180*act.reduce((a,r)=>a+r.d.w*r.s,0)/sw+25*(vix?vix.s:0))/100)*100),L=T<20?0:T<40?1:T<65?2:3;
+  const top=act.filter(r=>r.s>.15).sort((a,b)=>b.d.w*b.s-a.d.w*a.s).slice(0,3);
+  const desc=r=>r.d.t==='vix'?`VIX 恐慌指數 ${fmt(r.A.last,1)}${r.A.chgPct>=5?`（今天跳升 ${fmtPct(r.A.chgPct,0)}）`:''}`:r.d.t==='idx'?`${r.d.name} ${fmtPct(r.A.chgPct,1)}（跌幅約平常的 ${Math.max(1,-r.z).toFixed(1)} 倍）`:`${r.d.name} ${fmtPct(r.A.chgPct,1)}（變動比平常大）`;
+  const text=L===0?'各市場和先行指標目前都在正常範圍內，沒有明顯的風險訊號。':`風險溫度偏高，主要原因：${top.map(desc).join('、')}。`;
+  return {rows,T,L,n:act.length,live,text,top,label:RLV[L]};
+}
+function radarChip(r){
+  if(!r.A||r.miss||r.stale)return `<span class="rchip" title="${r.stale?'資料太舊':'載入中'}"><b>${esc(r.d.name)}</b> <span class="flat">${r.stale?'休市／無新資料':'…'}</span></span>`;
+  const A=r.A,lvl=r.s>.5?2:r.s>.15?1:0,val=r.d.g==='fac'?`${fmt(A.last,r.d.t==='twd'?3:2)} `:'';
+  return `<span class="rchip s${lvl}" title="${esc((RWHY[r.d.sym]||RWHY[r.d.g]||'')+' 今天的變動約是平常的 '+Math.abs(r.z).toFixed(1)+' 倍。')}"><b>${esc(r.d.name)}</b> ${val}<span class="${cls(A.chgPct)}">${arrow(A.chgPct)} ${fmtPct(A.chgPct,2)}</span></span>`;
+}
+function radarCardHTML(){
+  const R=radarCalc(),g=k=>R.rows.filter(r=>r.d.g===k).map(radarChip).join('');
+  const gauge=R.T==null?`<p class="sum" style="margin:8px 0">資料載入中…（已讀到 ${R.n}/${RADAR.length} 項，需要先載入各市場，約數十秒）</p>`:
+   `<div class="rgauge lv${R.L}"><div class="rnum">${R.T}<small>/100</small></div><div class="rbar"><i style="width:${R.T}%"></i></div><span class="lvb lv${Math.min(2,R.L)}">${R.L>=2?'‼ ':R.L===1?'！ ':'✓ '}${R.label}</span></div><p class="sum" style="margin:8px 0">${esc(R.text)}</p>`;
+  const why=[['^VIX','VIX 恐慌指數'],['CL=F','原油'],['GC=F','黃金'],['^TNX','美國10年債殖利率'],['DX-Y.NYB','美元指數'],['TWD=X','美元／台幣'],['JPY=X','美元／日圓'],['asia','亞洲市場'],['eu','歐洲市場'],['us','美國市場']].map(([k,n])=>`<li><b>${n}</b>：${RWHY[k]}</li>`).join('');
+  return `<div class="card pad radar" style="margin-bottom:14px"><div class="row" style="justify-content:space-between;gap:8px;flex-wrap:wrap"><h3 style="margin:0">🌍 全球風險溫度計（先行指標雷達）</h3><button class="btn sm" data-radarscan>立即更新</button></div>
+    ${gauge}<div class="rgrid">${['asia','eu','us','fac'].map(k=>`<div><div class="rgt">${RG[k]}</div><div class="rchips">${g(k)}</div></div>`).join('')}</div>
+    <details class="eguide" style="margin-top:8px"><summary>這些指標分別代表什麼？</summary><ul class="egbody" style="padding-left:1.2em;margin:6px 0;display:flex;flex-direction:column;gap:5px">${why}</ul></details>
+    <p class="hint">依各市場「最近一個交易日」的漲跌，換算成比自己平常波動大幾倍，再加總成 0～100 的風險溫度（20 以下平靜、40 以上警戒、65 以上高風險）。有時差，休市的市場會沿用前一個交易日。這是規則估算，不是預測；溫度高不代表一定會續跌，只是提醒你現在比平常更需要小心。</p></div>`;
+}
+function radarBannerHTML(){const R=radarCalc();if(R.T==null||R.L<2)return '';return `<div class="banner" style="border-color:color-mix(in srgb,#e8742a 70%,transparent);background:color-mix(in srgb,#e8742a 10%,var(--surface))"><b>🌍 全球風險${R.label}</b><span>風險溫度 ${R.T}/100。${esc(R.text)}</span><button class="btn sm" data-tab-go="easy">看雷達</button></div>`;}
+function radarAlerts(){
+  if(S.alerts.opts.radarOn===false)return;const R=radarCalc();if(R.T==null||R.live<Math.ceil(R.n*.6))return;const al=S.alerts;let ch=false;
+  const prev=al.rlv||0;
+  if(R.L>=2&&prev<2)fireAlert({sym:'',title:`🌍 全球風險升高：${R.label}（${R.T}/100）`,msg:R.text+'這是依各市場漲跌估算的風險溫度，不代表一定會續跌，建議先看看新聞與自己的持股。',dir:0,sev:4,sticky:true,tag:'radar-lv'});
+  if(R.L!==prev){al.rlv=R.L;ch=true;}
+  R.rows.forEach(r=>{if(!r.live||!r.A||r.stale)return;const A=r.A,t=r.d.t,z=r.z;let hit=null;
+    if(t==='idx'&&z<=-3&&A.chgPct<=-2)hit=`${r.d.name}${fmtPct(A.chgPct,1)}，跌幅約是平常波動的 ${(-z).toFixed(1)} 倍`;
+    else if(t==='vix'&&(A.chgPct>=25||A.last>=30))hit=`VIX 恐慌指數${A.last>=30?'升到 '+fmt(A.last,1)+'（明顯恐慌）':'單日跳升 '+fmtPct(A.chgPct,0)}`;
+    else if((t==='oil'||t==='yld')&&Math.abs(z)>=3)hit=`${r.d.name}${fmtPct(A.chgPct,1)}，變動約是平常的 ${Math.abs(z).toFixed(1)} 倍`;
+    else if((t==='gold'||t==='usd')&&z>=3)hit=`${r.d.name}急漲 ${fmtPct(A.chgPct,1)}，約是平常波動的 ${z.toFixed(1)} 倍`;
+    else if(t==='twd'&&z>=3&&A.chgPct>=1)hit=`台幣急貶：美元兌台幣 ${fmtPct(A.chgPct,1)}`;
+    else if(t==='jpy'&&z<=-3)hit=`日圓急升：美元兌日圓 ${fmtPct(A.chgPct,1)}`;
+    if(!hit)return;const k='rdr|'+r.d.sym+'|'+r.last;if(al.seen.includes(k))return;al.seen.push(k);ch=true;
+    fireAlert({sym:'',title:`🌍 ${RG[r.d.g]}｜${r.d.name}異常`,msg:`${hit}。${RWHY[r.d.sym]||RWHY[r.d.g]||''}`,dir:0,sev:4,sticky:t==='idx'||t==='vix',tag:k});});
+  if(ch){al.seen=al.seen.slice(-500);save();}
+}
+let radarBusy=false;
+function refreshRadar(){
+  if(radarBusy)return Promise.resolve();radarBusy=true;
+  return Promise.all(RADAR.map(d=>loadSymbol(d.sym,{}).catch(()=>null))).then(()=>{radarAlerts();renderBanner();
+    if(UI.tab==='easy'&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#easyWrap')))renderEasy();
+    if(UI.tab==='alerts'&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#alertsWrap')))renderAlerts();}).finally(()=>{radarBusy=false;});
+}
+function bindRadar(){document.addEventListener('click',e=>{const el=e.target.closest&&e.target.closest('[data-radarscan]');if(!el)return;RADAR.forEach(d=>{if(DATA[d.sym])DATA[d.sym].fetchedAt=0;});refreshRadar().then(()=>toast('全球雷達已更新'));});}
+
+window.__ML={radarCalc,radarAlerts,leadStat,leadersHit,leaderSyms,get S(){return S;},DATA,UI,Chart,setDemo,useDemo,demoBars,parseCSV,analyze,detectEvents,calcInd,prep,checkAlerts,fireAlert};
+bindAlerts();bindNews();bindRadar();
 init();
 </script>
 </body>
